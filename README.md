@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Contact-542801615@qq.com-green?style=flat&logo=appveyor" alt="Badge 2">
 </div>
 
-## Wish everyone can have their own AI assistant
+#### Wish everyone can have their own AI assistant
 
 | ![Image 1](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display0.png) | ![Image 2](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display1.png) |
 | --- | --- |
