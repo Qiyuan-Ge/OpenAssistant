@@ -1,6 +1,6 @@
 # OpenAssistant
 <div align=center>
-<img src="https://github.com/Qiyuan-Ge/PaintMind/blob/main/assets/A_beautiful_girl_celebrating_her_birthday.png?raw=true" width="512">
+<img src="https://github.com/Qiyuan-Ge/PaintMind/blob/main/assets/A_beautiful_girl_celebrating_her_birthday.png?raw=true" width="384">
 </div>
 
 <div align="center">
