@@ -14,11 +14,10 @@
 | --- | --- |
 | ![Image 3](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display2.png) | ![Image 4](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display3.png) |
 
-
+#### Quick Experience 
 [streamlit app](https://openassistant.streamlit.app/)
 
-
-
+#### Unfinished...
 
 
 
