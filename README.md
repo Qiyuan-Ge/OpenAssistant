@@ -14,7 +14,7 @@
 | ![Image 3](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display2.png) | ![Image 4](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display3.png) |
 
 
-[streamlit app]([https://www.google.com](https://openassistant.streamlit.app/)https://openassistant.streamlit.app/)
+[streamlit app](https://openassistant.streamlit.app/)
 
 
 
