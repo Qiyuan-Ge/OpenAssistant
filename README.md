@@ -143,7 +143,7 @@ Ye can earn a place on the Patron's deck! As a loyal patron, you'll enjoy exclus
 ### **3. WeChat Pay💰**
 Drop anchor with WeChat Pay and show yer support(有点中二，哈哈)!
 
-<img src="https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/wechat_support.png" alt="查看微信支付码" width="200"/>
+<img src="https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/wechat_support.png" alt="查看微信支付码" width="120"/>
 
 Yarrr, with your backing, we'll keep the cannons... err, algorithms firing smoothly, raise the sails of innovation, and ensure you have a swashbucklin' good time with Open Assistant. Our hearty thanks for your generosity, and watch out for more treasures on the horizon!
 
