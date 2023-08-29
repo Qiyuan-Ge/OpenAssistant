@@ -13,11 +13,11 @@
 
 This projectrepository encompasses the following features:
 
-#### 1. Rapid Conversion of LLM to Agent
+#### 1. Rapid Conversion of LLM to Agent🤖
 
 Effortlessly transform your Language Model (LLM) into an Agent.
 
-#### 2. LLM Proficiency Testing Tool
+#### 2. LLM Proficiency Testing Tool🛠️
 
 Explore and evaluate the capabilities of your Language Model through the integrated testing tool. 
 
