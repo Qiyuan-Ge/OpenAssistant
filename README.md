@@ -25,18 +25,21 @@ Explore and evaluate the capabilities of your Language Model through the integra
 
 Experience the convenience of the Open Assistant Web User Interface (WebUI). 
 
+<div style="text-align: center;">
+    <img src="https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display4.png" alt="display4">
+</div>
 
 ## Watch the demo(Vicuna v1.5)
 - Youtube
 [![Watch the video](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/cover.png)](https://youtu.be/kOIjamWMaaE)
-- bilibili
+- BiliBili
+[![Watch the video](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/cover.png)](https://www.bilibili.com/video/BV1ru4y1e7of/?vd_source=9d5543a5652fd4789c2e2c4f4a10267a)
 
 ## Everyone have their own AI assistant
 
 | ![Image 1](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display0.png) | ![Image 2](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display1.png) |
 | --- | --- |
 | ![Image 3](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display2.png) | ![Image 4](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display3.png) |
-
 
 ## Quick Experience 
 [streamlit app](https://openassistant.streamlit.app/)<br>
