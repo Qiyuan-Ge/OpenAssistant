@@ -119,11 +119,12 @@ class CustomPromptTemplate(StringPromptTemplate):
         kwargs["history"] = chat_history
         kwargs["date"] = get_current_time()
         kwargs["city"] = get_current_city()
-        
-        conv_template_config = kwargs.pop("conv_template_config")
-        conv = get_conv_template(conv_template_config.name)
-        if conv_template_config.system_message is not None:
-            conv.system = conv_template_config.system_message
+
+        system_message = kwargs.pop("system_message")
+        conv_template_name = kwargs.pop("conv_template_name")
+        conv = get_conv_template(conv_template_name)
+        if system_message is not None:
+            conv.system_message = system_message
         conv.sep2 = ''
         
         origin_prompt = self.template.format(**kwargs)
@@ -171,7 +172,7 @@ def load_agent(model_name: str, tools: List[Union[Tool, BaseTool]]):
     conversation_prompt = CustomPromptTemplate(
         template=prompt_template,
         tools=tools,
-        input_variables=["user", "intermediate_steps", "example", "history", "conv_template_config"]
+        input_variables=["user", "intermediate_steps", "example", "history", "system_message", "conv_template_name"]
     )
     
     llm = OpenAI(
