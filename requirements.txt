@@ -1,5 +1,5 @@
 fschat==0.2.24
-langchain==0.0.268
+langchain==0.0.275
 numpy==1.24.1
 openai==0.27.8
 pydantic==1.10.12
@@ -10,3 +10,4 @@ tqdm==4.66.0
 openai==0.27.8
 beautifulsoup4==4.11.1
 chromadb==0.4.5
+Pillow==10.0.0
