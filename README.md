@@ -29,7 +29,7 @@ Experience the convenience of the Open Assistant Web User Interface (WebUI).
 ## Watch the demo(Vicuna v1.5)
 - Youtube
 [![Watch the video](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/cover.png)](https://youtu.be/kOIjamWMaaE)
-
+- bilibili
 
 ## Everyone have their own AI assistant
 
@@ -117,6 +117,7 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:6006 (Press CTRL+C to quit)
 ````
+See more details in https://github.com/lm-sys/FastChat/blob/main/docs/openai_api.md
 
 ### 3. Starting the web UI
 ````
