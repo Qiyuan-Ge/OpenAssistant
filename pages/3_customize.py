@@ -35,12 +35,11 @@ with tab2:
     st.markdown('**What kind of assistant do you wish for?**')
     st.markdown('**Note:** the prompt you write below will overwrite the original system prompt.')
     if st.toggle('Turn on/off', value=st.session_state.customize_button, key="turn", label_visibility='hidden'):
-        system_message = st.text_input(
+        st.session_state.system_message = st.text_input(
             label="sys_prompt", 
             key="sys_prompt", 
             value=st.session_state.system_message,
             label_visibility='collapsed',
         )
-        st.session_state.system_message = system_message
     else:
         st.session_state.system_message = None
