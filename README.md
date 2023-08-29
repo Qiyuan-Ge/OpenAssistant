@@ -11,7 +11,7 @@
 
 ## Features
 
-This projectrepository encompasses the following features:
+This project encompasses the following features:
 
 #### 1. Rapid Conversion of LLM to Agent🤖
 
