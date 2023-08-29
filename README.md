@@ -123,7 +123,8 @@ INFO:     Uvicorn running on http://0.0.0.0:6006 (Press CTRL+C to quit)
 ````
 streamlit run main.py
 ````
-Then replace the **API Base** with http://0.0.0.0:6006/v1
+Then replace the **API Base** with http://0.0.0.0:6006/v1 <br>
+<img src="https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/api%20base.png" alt="apibase" width="128"/>
 
 
 ## Writen by YOU KNOW WHO🤪
