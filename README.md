@@ -19,8 +19,11 @@
 | --- | --- |
 | ![Image 3](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display2.png) | ![Image 4](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display3.png) |
 
+
 ## Quick Experience 
-[streamlit app](https://openassistant.streamlit.app/)
+[streamlit app](https://openassistant.streamlit.app/)<br>
+API Base: https://u31193-92ae-b10f516b.neimeng.seetacloud.com:6443/v1
+
 
 ## How to use
 ### 1. Installation
@@ -59,6 +62,7 @@ INFO:     Uvicorn running on http://0.0.0.0:6006 (Press CTRL+C to quit)
 streamlit run main.py
 ````
 Then replace the **API Base** with http://0.0.0.0:6006/v1
+
 
 ## Writen by YOU KNOW WHO
 
