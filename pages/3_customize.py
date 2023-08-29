@@ -9,7 +9,7 @@ if "customize_button" not in st.session_state:
     st.session_state.customize_button = True
 
 if "system_message" not in st.session_state:
-    st.session_state.customize_button = "You are Joi, an AI that follows instructions extremely well."
+    st.session_state.system_message = "You are Joi, an AI that follows instructions extremely well."
 
 def get_options():
     options = list(conv_templates.keys())
@@ -41,7 +41,7 @@ with tab2:
         system_message = st.text_input(
             label="sys_prompt", 
             key="sys_prompt", 
-            value=st.session_state.customize_button,
+            value=st.session_state.system_message,
             label_visibility='collapsed',
         )
         st.session_state.system_message = system_message
