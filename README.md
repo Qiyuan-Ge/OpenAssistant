@@ -27,7 +27,7 @@ Experience the convenience of the Open Assistant Web User Interface (WebUI).
 
 
 ## Watch the demo(Vicuna v1.5)
-
+- Youtube
 [![Watch the video](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/cover.png)](https://youtu.be/kOIjamWMaaE)
 
 
@@ -45,9 +45,9 @@ API Base: https://u31193-92ae-b10f516b.neimeng.seetacloud.com:6443/v1
 
 ## Support models
 models on huggingface:
-- vicuna_v1.1
-- airoboros_v1
-- koala_v1
+- vicuna
+- airoboros
+- koala
 - alpaca
 - chatglm
 - chatglm2
@@ -60,7 +60,6 @@ models on huggingface:
 - rwkv
 - openbuddy
 - phoenix
-- chatgpt
 - claude
 - mpt-7b-chat
 - mpt-30b-chat
