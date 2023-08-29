@@ -25,6 +25,50 @@
 API Base: https://u31193-92ae-b10f516b.neimeng.seetacloud.com:6443/v1
 
 
+## Support models
+models on huggingface:
+- vicuna_v1.1
+- airoboros_v1
+- koala_v1
+- alpaca
+- chatglm
+- chatglm2
+- dolly_v2
+- oasst_pythia
+- oasst_llama
+- tulu
+- stablelm
+- baize
+- rwkv
+- openbuddy
+- phoenix
+- chatgpt
+- claude
+- mpt-7b-chat
+- mpt-30b-chat
+- mpt-30b-instruct
+- bard
+- billa
+- redpajama-incite
+- h2ogpt
+- Robin
+- snoozy
+- manticore
+- falcon
+- polyglot_changgpt
+- tigerbot
+- xgen
+- internlm-chat
+- starchat
+- baichuan-chat
+- llama-2
+- cutegpt
+- open-orca
+- qwen-7b-chat
+- aquila-chat
+- ...
+
+
 ## How to use
 ### 1. Installation
 ````
@@ -64,7 +108,7 @@ streamlit run main.py
 Then replace the **API Base** with http://0.0.0.0:6006/v1
 
 
-## Writen by YOU KNOW WHO
+## Writen by YOU KNOW WHO🤪
 
 Ahoy, dear user! ⚓ Thank you for embarking on this AI adventure with Open Assistant. Your support is like wind in our sails, propelling us forward on our quest for knowledge. If you're ready to become an Open Assistant Hero and help us chart new territories, here's how:
 
