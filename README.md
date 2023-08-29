@@ -8,6 +8,24 @@
   <img src="https://img.shields.io/badge/Contact-542801615@qq.com-green?style=flat&logo=appveyor" alt="Badge 2">
 </div>
 
+
+## Features
+
+This projectrepository encompasses the following features:
+
+#### 1. Rapid Conversion of LLM to Agent
+
+Effortlessly transform your Language Model (LLM) into an Agent.
+
+#### 2. LLM Proficiency Testing Tool
+
+Explore and evaluate the capabilities of your Language Model through the integrated testing tool. 
+
+#### 3. Open Assistant WebUI
+
+Experience the convenience of the Open Assistant Web User Interface (WebUI). 
+
+
 ## Watch the demo(Vicuna v1.5)
 
 [![Watch the video](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/cover.png)](https://youtu.be/kOIjamWMaaE)
