@@ -10,8 +10,12 @@
 
 
 ## Features
+Let's ask the assistant first🤔:
+<div style="text-align: center;">
+    <img src="https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display4.png" alt="display4">
+</div>
 
-This project encompasses the following features:
+So this project encompasses the following features:
 
 #### 1. Rapid Conversion of LLM to Agent🤖
 
@@ -24,10 +28,6 @@ Explore and evaluate the capabilities of your Language Model through the integra
 #### 3. Open Assistant WebUI
 
 Experience the convenience of the Open Assistant Web User Interface (WebUI). 
-
-<div style="text-align: center;">
-    <img src="https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display4.png" alt="display4">
-</div>
 
 ## Watch the demo(Vicuna v1.5)
 - Youtube
