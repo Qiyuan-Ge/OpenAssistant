@@ -8,9 +8,6 @@ tab1, tab2 = st.tabs(["Prompt Template", "Custom instructions"])
 if "customize_button" not in st.session_state:
     st.session_state.customize_button = True
 
-if "system_message" not in st.session_state:
-    st.session_state.system_message = "You are Joi, an AI that follows instructions extremely well."
-
 def get_options():
     options = list(conv_templates.keys())
     options.remove(st.session_state.prompt_template)
