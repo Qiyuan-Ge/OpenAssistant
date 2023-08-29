@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Contact-542801615@qq.com-green?style=flat&logo=appveyor" alt="Badge 2">
 </div>
 
-## Watch the demo
+## Watch the demo(Vicuna v1.5)
 
 [![Watch the video](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/cover.png)](https://youtu.be/kOIjamWMaaE)
 
