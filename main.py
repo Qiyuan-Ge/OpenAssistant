@@ -3,7 +3,6 @@ import os
 import openai
 import requests
 import streamlit as st
-from dataclasses import dataclass
 from langchain.callbacks import StreamlitCallbackHandler
 
 from open_assistant import load_tools, load_agent
@@ -56,12 +55,6 @@ with st.sidebar:
         "#### 3.Custom instructions\n"
         "#### 4.Chat with your assistant!\n"
     )
-
-
-@dataclass
-class ConvTemplateConfig:
-    name: str = "vicuna_v1.1"
-    system_message: str = "You are Joi, an AI that follows instructions extremely well."
 
 
 @st.cache_resource
@@ -138,9 +131,9 @@ def main():
     agent = load_agent(model_name="text-davinci-003", tools=tools)
     
     sim_case_search = init_sim_case_search(CASES, model_name="text-embedding-ada-002")
- 
-    conv_template_config = ConvTemplateConfig(name=init_prompt_template(), system_message=init_system_message())
-    
+
+    conv_template_name = init_prompt_template()
+    system_message = init_system_message()
     messages = init_messages(avatar_user=avatar_user, avatar_assistant=avatar_assistant)
     
     if prompt := st.chat_input("Shift + Enter 换行, Enter 发送"):
@@ -156,7 +149,10 @@ def main():
             one_shot = sim_case_search(prompt)
             st_callback = StreamlitCallbackHandler(st.container())
             with st.spinner('I am thinking🤔...'):
-                response = agent.run({'user': prompt, 'history': messages, 'example': one_shot, 'conv_template_config': conv_template_config}, callbacks=[st_callback])
+                response = agent.run(
+                    {'user': prompt, 'history': messages, 'example': one_shot, 'system_message': system_message , 'conv_template_name': conv_template_name}, 
+                    callbacks=[st_callback]
+                )
             placeholder.markdown(response)
             messages.append({"role": "user", "content": prompt})
             messages.append({"role": "assistant", "content": response})
