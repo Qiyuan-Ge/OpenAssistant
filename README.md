@@ -17,7 +17,13 @@
 #### Quick Experience 
 [streamlit app](https://openassistant.streamlit.app/)
 
-#### Unfinished...
+#### How to use?
+##### 1. Installation
+````
+git clone https://github.com/Qiyuan-Ge/OpenAssistant.git
+cd OpenAssistant
+pip install -r requirements.txt
+````
 
 
 
