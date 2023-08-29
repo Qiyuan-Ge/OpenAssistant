@@ -8,3 +8,4 @@ Requests==2.31.0
 tiktoken==0.4.0
 tqdm==4.66.0
 openai==0.27.8
+beautifulsoup4==4.11.1
