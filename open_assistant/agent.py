@@ -132,7 +132,7 @@ class CustomPromptTemplate(StringPromptTemplate):
         
         conv.append_message(conv.roles[0], user_prompt)
         conv.append_message(conv.roles[1], assistant_prompt)
-        print(conv.get_prompt())
+        #print(conv.get_prompt())
         return conv.get_prompt()   
     
 
