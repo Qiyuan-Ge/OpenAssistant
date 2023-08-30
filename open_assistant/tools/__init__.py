@@ -1,3 +1,4 @@
+import streamlit as st
 from typing import List
 from langchain.agents import Tool
 from langchain.tools import StructuredTool
@@ -19,7 +20,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 )
                 tools.append(tool)
             except:
-                pass
+                st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Current Weather":
             try:
                 tool_func = OpenWeatherMapAPIWrapper()
@@ -30,7 +31,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 )
                 tools.append(tool)
             except:
-                pass
+                st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Browse Website":
             try:
                 tool_func = BrowseWebsiteWithQuestion(model_name=model_name, embedding_model_name=embedding_model_name)
@@ -41,9 +42,9 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 tool.description = 'gather information from a specified website, args: {"url": "<url>", "question": <question>}'
                 tools.append(tool)
             except:
-                pass
+                st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         else:
-            raise ValueError(f"Unknown tool name: {tool_name}")
+            st.info(f"Unknown tool name: {tool_name}", icon="ℹ️")
     tool = Tool(
         name="Final Response",
         func=lambda x: None,
