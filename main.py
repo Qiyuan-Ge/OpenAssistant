@@ -122,10 +122,9 @@ def read_image(image_path):
 
 def main():
     avatar_user = None
-    avatar_assistant = None #read_image('./assets/assistant.png')
+    avatar_assistant = None
     
     tool_names = init_tool_names()
-    
     tools = load_tools(tool_names=tool_names, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002")
     
     agent = load_agent(model_name="text-davinci-003", tools=tools)
@@ -146,16 +145,23 @@ def main():
     if prompt:
         with st.chat_message("assistant", avatar=avatar_assistant):
             placeholder = st.empty()
-            one_shot = sim_case_search(prompt)
             st_callback = StreamlitCallbackHandler(st.container())
-            with st.spinner('I am thinking🤔...'):
-                response = agent.run(
-                    {'user': prompt, 'history': messages, 'example': one_shot, 'system_message': system_message , 'conv_template_name': conv_template_name}, 
-                    callbacks=[st_callback]
-                )
+            try:
+                one_shot = sim_case_search(prompt)
+                with st.spinner('I am thinking🤔...'):
+                    response = agent.run(
+                        {'user': prompt, 'history': messages, 'example': one_shot, 'system_message': system_message , 'conv_template_name': conv_template_name}, 
+                        callbacks=[st_callback]
+                    )
+            except Exception as e:
+                st.warning("[For users interested in HuggingFace models]")
+                st.warning("Incorrect API Base provided. See how to set API base at https://github.com/Qiyuan-Ge/OpenAssistant.")
+                st.warning("[For users interested in OpenAI models]")
+                st.warning("Incorrect API Key provided. Find your API key at https://platform.openai.com/account/api-keys.")
+                st.stop()
             placeholder.markdown(response)
-            messages.append({"role": "user", "content": prompt})
-            messages.append({"role": "assistant", "content": response})
+        messages.append({"role": "user", "content": prompt})
+        messages.append({"role": "assistant", "content": response})
         
         st.button("clear conversation", key='b3', on_click=clear_messages)
         st.button("try again", key='b2', on_click=try_again)
