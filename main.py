@@ -167,7 +167,7 @@ def main():
             placeholder.markdown(response)
         messages.append({"role": "user", "content": prompt})
         messages.append({"role": "assistant", "content": response})
-        
+        print(messages)
         st.button("clear conversation", key='b3', on_click=clear_messages)
         st.button("try again", key='b2', on_click=try_again)
     
