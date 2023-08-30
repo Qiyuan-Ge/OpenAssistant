@@ -117,3 +117,14 @@ with st.container():
         Fetch information from the given web page.
         """
     )
+
+st.divider()
+
+with st.container():
+    st.subheader('Calculator➗') 
+    update("Calculator", "ck4")
+    st.markdown(
+        """
+        Language model that interprets a prompt and executes python code to do math.
+        """
+    )
