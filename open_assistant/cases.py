@@ -41,6 +41,16 @@ Action: Final Response
 Action Input: {"content": "In Beijing, the current weather is overcast clouds with a wind speed of 2.96 m/s, direction 158°, humidity 47%, temperature 32.94°C, feels like 35.35°C, no rain and cloud cover at 94%."}
 """)
 
+d.append("""Question: 10,000 raised to the power of 0.5 minus 50 equals?
+Thought: I should calculate the result of 10,000 raised to the power of 0.5 minus 50.
+Action: Calculator
+Action Input: {"input": "10000 ** 0.5 - 50"}
+Observation: 50.0
+Thought: Now that I have calculated the result, I should format it for the user.
+Action: Final Response
+Action Input: {"content": "The result is 50.0."}
+""")
+
 CASES = []
 for i, example in enumerate(d):
     instruction = example.split('Thought')[0].lstrip('Question:').strip()
