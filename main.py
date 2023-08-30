@@ -77,7 +77,7 @@ def clear_messages():
 
 def init_tool_names():
     if "tool_names" not in st.session_state:
-        st.session_state.tool_names = []
+        st.session_state.tool_names = ["Browse Website"]
     return st.session_state.tool_names
 
 
