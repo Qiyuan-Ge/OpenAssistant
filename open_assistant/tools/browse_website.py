@@ -37,21 +37,24 @@ class BrowseWebsiteWithQuestion:
             question (str): question to ask
 
         """        
-        loader = self.loader(url)
-        data = loader.load()
-
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=self.chunk_size, 
-            chunk_overlap=self.chunk_overlap,
-            length_function=compute_tokens_length,
-        )
-        all_splits = text_splitter.split_documents(data)
-        vectorstore = Chroma.from_documents(documents=all_splits, embedding=self.embeddings)
-        qa_chain = RetrievalQA.from_chain_type(
-            self.llm,
-            retriever=vectorstore.as_retriever(),
-            chain_type_kwargs={"prompt": self.template}
-        )
-        result = qa_chain({"query": question})
-            
-        return result["result"]
+        try:
+            loader = self.loader(url)
+            data = loader.load()
+    
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=self.chunk_size, 
+                chunk_overlap=self.chunk_overlap,
+                length_function=compute_tokens_length,
+            )
+            all_splits = text_splitter.split_documents(data)
+            vectorstore = Chroma.from_documents(documents=all_splits, embedding=self.embeddings)
+            qa_chain = RetrievalQA.from_chain_type(
+                self.llm,
+                retriever=vectorstore.as_retriever(),
+                chain_type_kwargs={"prompt": self.template}
+            )
+            result = qa_chain({"query": question})
+                
+            return result["result"]
+        except Exception as e:
+            return e
