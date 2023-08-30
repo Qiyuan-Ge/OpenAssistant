@@ -155,10 +155,10 @@ def main():
                         callbacks=[st_callback]
                     )
             except Exception as e:
-                st.warning("[For users interested in HuggingFace models]")
-                st.warning("Incorrect API Base provided. See how to set API base at https://github.com/Qiyuan-Ge/OpenAssistant.")
-                st.warning("[For users interested in OpenAI models]")
-                st.warning("Incorrect API Key provided. Find your API key at https://platform.openai.com/account/api-keys.")
+                st.info("For users interested in HuggingFace models", icon="ℹ️")
+                st.error("Incorrect API Base provided. See how to set API base at https://github.com/Qiyuan-Ge/OpenAssistant.")
+                st.info("For users interested in OpenAI models", icon="ℹ️")
+                st.error("Incorrect API Key provided. Find your API key at https://platform.openai.com/account/api-keys.")
                 st.stop()
             placeholder.markdown(response)
         messages.append({"role": "user", "content": prompt})
