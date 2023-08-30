@@ -50,7 +50,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 tool = Tool(
                     name="Calculator",
                     func=tool_func.run,
-                    description='language model that interprets a prompt and executes python code to do math, args: {"question": "question"}',
+                    description='language model that interprets a prompt and executes python code to do math, args: {"input": "math expression"}',
                 )
                 tools.append(tool)
             except:
