@@ -46,8 +46,8 @@ class Calulator:
         self.model_name = model_name
         self.template = prompt_template
         
-    def run(self, question: str):
-        prompts = self.template.format(question=question)
+    def run(self, input: str):
+        prompts = self.template.format(question=input)
         completion = self.client.create(model=self.model_name, messages=[{"role": "user", "content": prompts}])
         llm_output = completion.choices[0].message.content
         
