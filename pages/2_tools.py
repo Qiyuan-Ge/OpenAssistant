@@ -2,10 +2,6 @@ import os
 import json
 import streamlit as st
 from io import StringIO
-
-
-if "tool_names" not in st.session_state:
-    st.session_state.tool_names = []
     
 
 if "env_key_data" not in st.session_state:
