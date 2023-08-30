@@ -3,6 +3,7 @@ import os
 import openai
 import requests
 import streamlit as st
+from openai.error import AuthenticationError
 from langchain.callbacks import StreamlitCallbackHandler
 
 from open_assistant import load_tools, load_agent
@@ -154,11 +155,14 @@ def main():
                         {'user': prompt, 'history': messages, 'example': one_shot, 'system_message': system_message , 'conv_template_name': conv_template_name}, 
                         callbacks=[st_callback]
                     )
-            except Exception as e:
+            except AuthenticationError:
                 st.info("For users interested in HuggingFace models", icon="ℹ️")
                 st.error("Incorrect API Base provided. See how to set API base at https://github.com/Qiyuan-Ge/OpenAssistant.")
                 st.info("For users interested in OpenAI models", icon="ℹ️")
                 st.error("Incorrect API Key provided. Find your API key at https://platform.openai.com/account/api-keys.")
+                st.stop()
+            except Exception as e:
+                st.error(e)
                 st.stop()
             placeholder.markdown(response)
         messages.append({"role": "user", "content": prompt})
