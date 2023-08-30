@@ -18,14 +18,6 @@ def init_server():
         st.session_state.server_api_key = "EMPTY"
     if "server_api_base" not in st.session_state:
         st.session_state.server_api_base = "https://api.openai.com/v1"
-        
-
-def set_openai_keys(api_key="EMPTY", api_base="https://api.openai.com/v1"):
-    os.environ['OPENAI_API_KEY'] = api_key
-    os.environ['OPENAI_API_BASE'] = api_base
-    
-    openai.api_key = api_key
-    openai.api_base = api_base
 
 
 init_server()
@@ -48,13 +40,22 @@ with st.sidebar:
         key="api_base", 
         value=st.session_state.server_api_base,
     )
-    set_openai_keys(st.session_state.server_api_key, st.session_state.server_api_base)
-    
     st.markdown(
         "#### 2.Select tools\n"
         "#### 3.Custom instructions\n"
         "#### 4.Chat with your assistant!\n"
     )
+
+
+def set_openai_keys(api_key="EMPTY", api_base="https://api.openai.com/v1"):
+    os.environ['OPENAI_API_KEY'] = api_key
+    os.environ['OPENAI_API_BASE'] = api_base
+    
+    openai.api_key = api_key
+    openai.api_base = api_base
+
+
+set_openai_keys(st.session_state.server_api_key, st.session_state.server_api_base)
 
 
 @st.cache_resource
