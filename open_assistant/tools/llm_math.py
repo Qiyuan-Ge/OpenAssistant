@@ -50,11 +50,11 @@ class Calulator:
         prompts = self.template.format(question=input)
         completion = self.client.create(model=self.model_name, messages=[{"role": "user", "content": prompts}])
         llm_output = completion.choices[0].message.content
-        
+        print(llm_output)  
         pattern = r'numexpr\.evaluate\("([^"]+)"\)'
         matches = re.findall(pattern, llm_output)
         expression = matches[0].strip()
-        print(llm_output)  
+        
         try:
             output = str(numexpr.evaluate(expression, global_dict={}))
         except Exception as e:
