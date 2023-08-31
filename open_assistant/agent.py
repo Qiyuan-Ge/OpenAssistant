@@ -14,7 +14,8 @@ from fastchat.conversation import get_conv_template
 
 SPLIT_TOKEN = '<end of turn>'
 
-prompt_template = """You have access to the following tools:
+prompt_template = """Current datetime is {date}.
+You have access to the following tools:
 {tools}
 
 
@@ -51,7 +52,7 @@ Previous chat history:
 {history}
 
 
-Current datetime is {date}. Let's Begin!
+Now Let's Begin!
 
 Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
 
