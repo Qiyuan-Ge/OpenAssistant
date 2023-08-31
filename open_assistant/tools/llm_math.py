@@ -58,7 +58,7 @@ class Calulator:
         try:
             output = str(numexpr.evaluate(expression, global_dict={}))
         except Exception as e:
-            error_msg = f'"{question}" raised error: {e}. Please try again with a valid question, such as "What is 37 * 67?"'
+            error_msg = f'"{input}" raised error: {e}. Please try again with a simple question, such as "What is 37 * 67?"'
             return error_msg
             
         return re.sub(r"^\[|\]$", "", output)
