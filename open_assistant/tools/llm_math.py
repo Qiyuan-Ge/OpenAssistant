@@ -54,7 +54,7 @@ class Calulator:
         pattern = r'numexpr\.evaluate\("([^"]+)"\)'
         matches = re.findall(pattern, llm_output)
         expression = matches[0].strip()
-          
+        print(llm_output)  
         try:
             output = str(numexpr.evaluate(expression, global_dict={}))
         except Exception as e:
