@@ -53,7 +53,7 @@ Action Input: {{"content": "Hello! How can I assist you today?"}}
 
 Let's Begin!
 
-New Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
+Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
 
 
 def get_current_time():
