@@ -83,6 +83,8 @@ def convert_messages_to_conversation(messages: List[dict]) -> str:
 
 def try_parsing_final_response(action_input):
     try:
+        pattern = r'\{[^{}]*\}'
+        action_input = re.findall(pattern, action_input)[0]
         action_input = json.loads(action_input)
         response = action_input["content"]
     except:
