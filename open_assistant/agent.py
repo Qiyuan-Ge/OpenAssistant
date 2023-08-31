@@ -194,6 +194,6 @@ def load_agent(model_name: str, tools: List[Union[Tool, BaseTool]]):
         allowed_tools=[tool.name for tool in tools],
     )
     
-    agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools, verbose=False)
+    agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools, verbose=True)
     
     return agent_executor
