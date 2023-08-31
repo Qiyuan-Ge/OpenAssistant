@@ -48,13 +48,12 @@ Action: Final Response
 Action Input: {{"content": "Hello! How can I assist you today?"}}
 
 
-Previous chat history:
 {history}
 
 
 Now Let's Begin!
 
-Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
+New Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
 
 
 def get_current_time():
@@ -78,6 +77,9 @@ def convert_messages_to_conversation(messages: List[dict]) -> str:
             conv_prompt += f"user: {message['content']}\n"
         elif message["role"] == "assistant":
             conv_prompt += f"assistant: {message['content']}\n"
+            
+    if len(conv_prompt) > 0:
+        conv_prompt = f"Previous chat history:\n{conv_prompt}"
             
     return conv_prompt
 
