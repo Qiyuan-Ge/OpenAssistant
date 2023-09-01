@@ -51,7 +51,13 @@ with tab3:
 
     For example, if the `max new tokens` value is set to 50, the model will generate a response with no more than 50 new words. If the response exceeds this limit, it may truncate or omit some text to fit within the specified maximum.
     """)
-    max_toknes = st.slider('Max New Tokens', min_value=1, max_value=4096, label_visibility="collapsed")
+    st.session_state.generate_params['max_toknes'] = st.slider(
+        'Max New Tokens', 
+        min_value=1, 
+        max_value=4096, 
+        value=st.session_state.generate_params['max_toknes'], 
+        label_visibility="collapsed",
+    )
     
     st.markdown("""
     ### Temperature
@@ -62,7 +68,13 @@ with tab3:
 
     Think of it as adjusting the "creativity" knob of the model to influence the diversity of generated text.
     """)
-    temperature = st.slider('Temperature', min_value=0.0, max_value=1.0, label_visibility="collapsed")
+    st.session_state.generate_params['temperature'] = st.slider(
+        'Temperature', 
+        min_value=0.0, 
+        max_value=1.0, 
+        value=st.session_state.generate_params['temperature'], 
+        label_visibility="collapsed",
+    )
     
     st.markdown("""
     ### Top-p (Nucleus Sampling)
@@ -70,4 +82,10 @@ with tab3:
 
     It determines the probability distribution of words to consider when generating text. When you set a `top-p` value (e.g., 0.8), the model considers only the most probable words that make up 80% of the cumulative probability.
     """)
-    top_p = st.slider('Top-p', min_value=0.0, max_value=1.0, label_visibility="collapsed")
+    st.session_state.generate_params['top_p'] = st.slider(
+        'Top-p', 
+        min_value=0.0, 
+        max_value=1.0, 
+        label_visibility="collapsed",
+        value=st.session_state.generate_params['top_p'], 
+    )
