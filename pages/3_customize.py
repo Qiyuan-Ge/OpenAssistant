@@ -62,7 +62,7 @@ with tab3:
 
     Think of it as adjusting the "creativity" knob of the model to influence the diversity of generated text.
     """)
-    temperature = st.slider('Temperature', min_value=0, max_value=1.0, label_visibility="collapsed")
+    temperature = st.slider('Temperature', min_value=0.0, max_value=1.0, label_visibility="collapsed")
     
     st.markdown("""
     ### Top-p (Nucleus Sampling)
@@ -70,4 +70,4 @@ with tab3:
 
     It determines the probability distribution of words to consider when generating text. When you set a `top-p` value (e.g., 0.8), the model considers only the most probable words that make up 80% of the cumulative probability.
     """)
-    top_p = st.slider('Top-p', min_value=0, max_value=1.0, label_visibility="collapsed")
+    top_p = st.slider('Top-p', min_value=0.0, max_value=1.0, label_visibility="collapsed")
