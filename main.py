@@ -145,7 +145,8 @@ def main():
 
     if prompt:
         with st.chat_message("user", avatar=avatar_user):
-            st.markdown(prompt)
+            if st.session_state.messages[-1]["role"] == "assistant":
+                st.markdown(prompt)
         messages.append({"role": "user", "content": prompt})
         with st.chat_message("assistant", avatar=avatar_assistant):
             placeholder = st.empty()
