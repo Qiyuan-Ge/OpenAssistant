@@ -20,7 +20,7 @@ def init_server():
     if "server_api_base" not in st.session_state:
         st.session_state.server_api_base = "https://u31193-92ae-b10f516b.neimeng.seetacloud.com:6443/v1" #"https://api.openai.com/v1"
     if "generate_params" not in st.session_state:
-        st.session_state.generate_params = {'max_tokens':4096, 'temperature':0.9, 'top_p':0.6}
+        st.session_state.generate_params = {'max_tokens':3072, 'temperature':0.9, 'top_p':0.6}
         
 
 init_server()
