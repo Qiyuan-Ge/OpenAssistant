@@ -69,7 +69,7 @@ def go_back():
     
 
 def try_again():
-    if st.session_state.messages[-1]["role"] = "assistant":
+    if st.session_state.messages[-1]["role"] == "assistant":
         del st.session_state.messages[-1]
 
 
