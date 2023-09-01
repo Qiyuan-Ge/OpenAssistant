@@ -131,8 +131,9 @@ def main():
     
     tool_names = init_tool_names()
     tools = load_tools(tool_names=tool_names, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002")
-    
-    agent = load_agent(model_name="text-davinci-003", tools=tools)
+
+    generate_params = st.session_state.generate_params
+    agent = load_agent(model_name="text-davinci-003", tools=tools, generate_params=generate_params)
     
     sim_case_search = init_sim_case_search(CASES, model_name="text-embedding-ada-002")
 
