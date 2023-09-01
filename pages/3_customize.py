@@ -43,3 +43,10 @@ with tab2:
         )
     else:
         st.session_state.system_message = None
+
+with tab3:
+    st.markdown('**Params**')
+    max_toknes = st.slider('Max new tokens', 1, 4096)
+    st.write(max_toknes)
+    temperature = st.slider('Temperature', 0, 1)
+    st.write(temperature)
