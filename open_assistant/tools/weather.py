@@ -71,7 +71,10 @@ class OpenWeatherMapAPIWrapper(BaseModel):
     def run(self, location: str) -> str:
         """Get the current weather information for a specified location."""
         mgr = self.owm.weather_manager()
-        observation = mgr.weather_at_place(location)
-        w = observation.weather
-
-        return self._format_weather_info(location, w)
+        try:
+            observation = mgr.weather_at_place(location)
+            w = observation.weather
+            return self._format_weather_info(location, w)
+        except Exception as e:
+            error_msg = f'"{location}" raised error: {e}. Please try again with a valid location"'
+            return error_msg
