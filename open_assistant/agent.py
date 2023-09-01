@@ -14,7 +14,8 @@ from fastchat.conversation import get_conv_template
 
 SPLIT_TOKEN = '<end of turn>'
 
-prompt_template = """Current datetime is {date}.
+prompt_template = """Current datetime is {date}
+
 You have access to the following tools:
 {tools}
 
