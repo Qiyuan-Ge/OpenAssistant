@@ -53,7 +53,7 @@ with tab3:
     """)
     st.session_state.generate_params['max_tokens'] = st.slider(
         'Max New Tokens', 
-        min_value=1, 
+        min_value=32, 
         max_value=4096, 
         value=st.session_state.generate_params['max_tokens'], 
         label_visibility="collapsed",
