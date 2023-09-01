@@ -137,14 +137,14 @@ def main():
     system_message = init_system_message()
     messages = init_messages(avatar_user=avatar_user, avatar_assistant=avatar_assistant)
     
-    if prompt := st.chat_input("Shift + Enter 换行, Enter 发送"):
-        with st.chat_message("user", avatar=avatar_user):
-            st.markdown(prompt)
-    
+    prompt = st.chat_input("Shift + Enter 换行, Enter 发送"):
+        
     if len(messages) > 0 and messages[-1]['role'] == 'user':
         prompt = messages[-1]['content']
 
     if prompt:
+        with st.chat_message("user", avatar=avatar_user):
+            st.markdown(prompt)
         with st.chat_message("assistant", avatar=avatar_assistant):
             placeholder = st.empty()
             st_callback = StreamlitCallbackHandler(st.container())
