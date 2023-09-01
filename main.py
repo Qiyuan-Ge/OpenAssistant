@@ -69,7 +69,8 @@ def go_back():
     
 
 def try_again():
-    del st.session_state.messages[-1]
+    if st.session_state.messages[-1]["role"] = "assistant":
+        del st.session_state.messages[-1]
 
 
 def clear_messages():
@@ -145,6 +146,7 @@ def main():
     if prompt:
         with st.chat_message("user", avatar=avatar_user):
             st.markdown(prompt)
+        messages.append({"role": "user", "content": prompt})
         with st.chat_message("assistant", avatar=avatar_assistant):
             placeholder = st.empty()
             st_callback = StreamlitCallbackHandler(st.container())
@@ -156,7 +158,6 @@ def main():
                         callbacks=[st_callback]
                     )
                 placeholder.markdown(response)
-                messages.append({"role": "user", "content": prompt})
                 messages.append({"role": "assistant", "content": response})
                 print(messages)
             except AuthenticationError:
@@ -168,7 +169,6 @@ def main():
             except Exception as e:
                 st.error(e)
                 st.stop()
-    
         st.button("clear conversation", key='b3', on_click=clear_messages)
         st.button("try again", key='b2', on_click=try_again)
     
