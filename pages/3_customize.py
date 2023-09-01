@@ -3,7 +3,7 @@ from fastchat.conversation import conv_templates, get_conv_template
 
 st.image("https://cdn.pixabay.com/photo/2023/02/11/16/32/ai-generated-7783344_640.jpg", width=256)
 
-tab1, tab2, tabs = st.tabs(["Prompt Template", "Custom Instructions", "Generate Params"])
+tab1, tab2, tab3 = st.tabs(["Prompt Template", "Custom Instructions", "Generate Params"])
 
 if "customize_button" not in st.session_state:
     st.session_state.customize_button = True
