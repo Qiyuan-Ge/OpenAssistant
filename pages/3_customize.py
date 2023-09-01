@@ -46,5 +46,14 @@ with tab2:
 
 with tab3:
     st.markdown('**Params**')
-    max_toknes = st.slider('Max new tokens', 1, 4096)
+    st.markdown('**Max New Tokens**')
+    st.markdown("""
+    Max New Tokens refers to the maximum number of new words or tokens that a language model can generate in a single response.
+
+    For example, if the max new tokens value is set to 50, the model will generate a response with no more than 50 new words. If the response exceeds this limit, it may truncate or omit some text to fit within the specified maximum.
+    """)
+    max_toknes = st.slider('Max New Tokens', 1, 4096)
+    st.markdown('**Temperature**')
     temperature = st.slider('Temperature', 0, 1)
+    st.markdown('**Top-p (Nucleus Sampling)**')
+    top_p = st.slider('Top-p', 0, 1)
