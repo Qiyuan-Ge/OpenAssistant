@@ -171,7 +171,7 @@ class CustomOutputParser(AgentOutputParser):
         return AgentAction(tool=action, tool_input=action_input, log=llm_output)
 
 
-def load_agent(model_name: str, tools: List[Union[Tool, BaseTool]]):
+def load_agent(model_name: str, tools: List[Union[Tool, BaseTool]], generate_params: dict):
     
     conversation_prompt = CustomPromptTemplate(
         template=prompt_template,
@@ -180,7 +180,10 @@ def load_agent(model_name: str, tools: List[Union[Tool, BaseTool]]):
     )
     
     llm = OpenAI(
-        model=model_name, 
+        model=model_name,
+        temperature=generate_params['temperature'],
+        max_tokens=generate_params['max_tokens'],
+        top_p=generate_params['top_p'],
         streaming=True, 
         callbacks=[StreamingStdOutCallbackHandler()],
     )
