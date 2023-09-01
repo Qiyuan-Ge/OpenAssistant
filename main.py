@@ -154,7 +154,7 @@ def main():
                 one_shot = sim_case_search(prompt)
                 with st.spinner('I am thinking🤔...'):
                     response = agent.run(
-                        {'user': prompt, 'history': messages, 'example': one_shot, 'system_message': system_message , 'conv_template_name': conv_template_name}, 
+                        {'user': prompt, 'history': messages[:-1], 'example': one_shot, 'system_message': system_message , 'conv_template_name': conv_template_name}, 
                         callbacks=[st_callback]
                     )
                 placeholder.markdown(response)
