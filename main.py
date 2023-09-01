@@ -155,6 +155,10 @@ def main():
                         {'user': prompt, 'history': messages, 'example': one_shot, 'system_message': system_message , 'conv_template_name': conv_template_name}, 
                         callbacks=[st_callback]
                     )
+                placeholder.markdown(response)
+                messages.append({"role": "user", "content": prompt})
+                messages.append({"role": "assistant", "content": response})
+                print(messages)
             except AuthenticationError:
                 st.info("For users interested in HuggingFace models", icon="ℹ️")
                 st.error("Incorrect API Base provided. See how to set API base at https://github.com/Qiyuan-Ge/OpenAssistant.")
@@ -164,10 +168,7 @@ def main():
             except Exception as e:
                 st.error(e)
                 st.stop()
-            placeholder.markdown(response)
-        messages.append({"role": "user", "content": prompt})
-        messages.append({"role": "assistant", "content": response})
-        print(messages)
+    
         st.button("clear conversation", key='b3', on_click=clear_messages)
         st.button("try again", key='b2', on_click=try_again)
     
