@@ -45,8 +45,6 @@ with tab2:
         st.session_state.system_message = None
 
 with tab3:
-    st.markdown('**Params**')
-    st.markdown('**Max New Tokens**')
     st.markdown("""
     ### Max New Tokens
     Max New Tokens refers to the maximum number of new words or tokens that a language model can generate in a single response.
@@ -54,7 +52,7 @@ with tab3:
     For example, if the `max new tokens` value is set to 50, the model will generate a response with no more than 50 new words. If the response exceeds this limit, it may truncate or omit some text to fit within the specified maximum.
     """)
     max_toknes = st.slider('Max New Tokens', 1, 4096, label_visibility="collapsed")
-    st.markdown('**Temperature**')
+    
     st.markdown("""
     ### Temperature
     Temperature is a setting that controls the randomness of a language model's output. 
@@ -65,7 +63,7 @@ with tab3:
     Think of it as adjusting the "creativity" knob of the model to influence the diversity of generated text.
     """)
     temperature = st.slider('Temperature', 0, 1, label_visibility="collapsed")
-    st.markdown('**Top-p (Nucleus Sampling)**')
+    
     st.markdown("""
     ### Top-p (Nucleus Sampling)
     Top-p, also known as Nucleus Sampling, is a technique used for controlling the diversity of generated text. 
