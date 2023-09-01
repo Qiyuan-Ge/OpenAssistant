@@ -91,7 +91,7 @@ def init_prompt_template():
 
 def init_system_message():
     if "system_message" not in st.session_state:
-        st.session_state.system_message = "You are Joi, an AI assistant that follows instruction extremely well. Help as much as you can."
+        st.session_state.system_message = "You are Vic, an AI assistant that follows instruction extremely well. Help as much as you can."
     return st.session_state.system_message
 
 
