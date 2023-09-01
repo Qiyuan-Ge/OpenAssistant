@@ -55,7 +55,7 @@ with tab3:
         'Max New Tokens', 
         min_value=32, 
         max_value=4096,
-        steps=16,
+        step=16,
         value=st.session_state.generate_params['max_tokens'], 
         label_visibility="collapsed",
     )
