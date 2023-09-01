@@ -137,7 +137,7 @@ def main():
     system_message = init_system_message()
     messages = init_messages(avatar_user=avatar_user, avatar_assistant=avatar_assistant)
     
-    prompt = st.chat_input("Shift + Enter 换行, Enter 发送"):
+    prompt = st.chat_input("Shift + Enter 换行, Enter 发送")
         
     if len(messages) > 0 and messages[-1]['role'] == 'user':
         prompt = messages[-1]['content']
