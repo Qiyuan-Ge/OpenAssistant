@@ -48,12 +48,28 @@ with tab3:
     st.markdown('**Params**')
     st.markdown('**Max New Tokens**')
     st.markdown("""
+    ### Max New Tokens
     Max New Tokens refers to the maximum number of new words or tokens that a language model can generate in a single response.
 
-    For example, if the max new tokens value is set to 50, the model will generate a response with no more than 50 new words. If the response exceeds this limit, it may truncate or omit some text to fit within the specified maximum.
+    For example, if the `max new tokens` value is set to 50, the model will generate a response with no more than 50 new words. If the response exceeds this limit, it may truncate or omit some text to fit within the specified maximum.
     """)
-    max_toknes = st.slider('Max New Tokens', 1, 4096)
+    max_toknes = st.slider('Max New Tokens', 1, 4096, label_visibility="collapsed")
     st.markdown('**Temperature**')
-    temperature = st.slider('Temperature', 0, 1)
+    st.markdown("""
+    ### Temperature
+    Temperature is a setting that controls the randomness of a language model's output. 
+
+    - A higher temperature (e.g., 1.0) makes the output more random and creative.
+    - A lower temperature (e.g., 0.2) makes the output more focused and deterministic.
+
+    Think of it as adjusting the "creativity" knob of the model to influence the diversity of generated text.
+    """)
+    temperature = st.slider('Temperature', 0, 1, label_visibility="collapsed")
     st.markdown('**Top-p (Nucleus Sampling)**')
-    top_p = st.slider('Top-p', 0, 1)
+    st.markdown("""
+    ### Top-p (Nucleus Sampling)
+    Top-p, also known as Nucleus Sampling, is a technique used for controlling the diversity of generated text. 
+
+    It determines the probability distribution of words to consider when generating text. When you set a `top-p` value (e.g., 0.8), the model considers only the most probable words that make up 80% of the cumulative probability.
+    """)
+    top_p = st.slider('Top-p', 0, 1, label_visibility="collapsed")
