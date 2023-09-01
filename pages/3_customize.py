@@ -51,11 +51,11 @@ with tab3:
 
     For example, if the `max new tokens` value is set to 50, the model will generate a response with no more than 50 new words. If the response exceeds this limit, it may truncate or omit some text to fit within the specified maximum.
     """)
-    st.session_state.generate_params['max_toknes'] = st.slider(
+    st.session_state.generate_params['max_tokens'] = st.slider(
         'Max New Tokens', 
         min_value=1, 
         max_value=4096, 
-        value=st.session_state.generate_params['max_toknes'], 
+        value=st.session_state.generate_params['max_tokens'], 
         label_visibility="collapsed",
     )
     
