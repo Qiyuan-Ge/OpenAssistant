@@ -19,10 +19,8 @@ You have access to the following tools:
 {tools}
 
 
-Question:
-the input question you must answer or the task you must complete
+Question: the input question you must answer or the task you must complete
 
-Respond format:
 You should only respond in format as described below:
 
 Thought: you should always think about what to do
