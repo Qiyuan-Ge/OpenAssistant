@@ -183,17 +183,14 @@ def main():
                 predictions = None
 
         if predictions is not None:
-            st.button(f"a. {predictions[0]}", key='b4', on_click=click_add_message, kwargs={'message':predictions[0]})
-            st.button(f"b. {predictions[1]}", key='b5', on_click=click_add_message, kwargs={'message':predictions[1]})
+            st.button(f"a. {predictions[0]}", key='b1', on_click=click_add_message, kwargs={'message':predictions[0]})
+            st.button(f"b. {predictions[1]}", key='b2', on_click=click_add_message, kwargs={'message':predictions[1]})
         
-        st.button("clear conversation", key='b1', on_click=clear_messages)
-        st.button("try again", key='b2', on_click=try_again)
+        st.button("try again", key='b3', on_click=try_again)
         if len(messages) > 0:
-            st.button("go back", key='b3', on_click=go_back)
+            st.button("go back", key='b4', on_click=go_back)
+        st.button("clear conversation", key='b5', on_click=clear_messages)
 
         
-    
-            
-
 if __name__ == "__main__":
     main()
