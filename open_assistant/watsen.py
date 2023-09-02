@@ -37,15 +37,14 @@ class SimCaseSearch:
         return self.template.format(instruction=rec['instruction'], response=rec['response'])
 
 
-prompt_template_2 = """You are provided with a conversation history between an AI assistant and a user. Based on the context of the conversation, please predict the three most probable questions or requests the user is likely to make next.
+prompt_template_2 = """You are provided with a conversation history between an AI assistant and a user. Based on the context of the conversation, please predict the two most probable questions or requests the user is likely to make next.
 
 Previous conversation history:
 {conversation}
 
 Please respond in the following format:
-1. text
-2. text
-3. text
+1. first prediction
+2. second prediction
 
 Your predictions:
 """ 
