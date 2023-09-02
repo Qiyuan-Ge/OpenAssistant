@@ -1,3 +1,4 @@
+import re
 import openai
 import numpy as np
 from tqdm.auto import tqdm
