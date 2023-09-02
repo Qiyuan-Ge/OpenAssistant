@@ -179,7 +179,6 @@ def main():
         with st.spinner('You might ask...'):
             try:
                 predictions = conversation_mimic(messages)
-                placeholder.markdown(str(predictions))
             except Exception as e:
                 predictions = None
         
@@ -189,8 +188,8 @@ def main():
             st.button("go back", key='b3', on_click=go_back)
 
         if predictions is not None:
-            st.button(f"a. {response[0]}", key='b4', on_click=click_add_message, kwargs={'message':predictions[0]})
-            st.button(f"b. {response[1]}", key='b5', on_click=click_add_message, kwargs={'message':predictions[1]})
+            st.button(f"a. {predictions[0]}", key='b4', on_click=click_add_message, kwargs={'message':predictions[0]})
+            st.button(f"b. {predictions[1]}", key='b5', on_click=click_add_message, kwargs={'message':predictions[1]})
     
             
 
