@@ -27,7 +27,7 @@ def init_session_state():
     if "chat_model_name" not in st.session_state:
         st.session_state.chat_model_name = "gpt-3.5-turbo"
     if "completion_model_name" not in st.session_state:
-        st.session_state.completion_model_name = ""text-davinci-003""
+        st.session_state.completion_model_name = "text-davinci-003"
     if "embedding_model_name" not in st.session_state::
         st.session_state.embedding_model_name = "text-embedding-ada-002"
     if "prompt_template" not in st.session_state:
