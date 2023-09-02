@@ -8,22 +8,43 @@ from langchain.callbacks import StreamlitCallbackHandler
 
 from open_assistant import load_tools, load_agent
 from open_assistant.cases import CASES
-from open_assistant.watsen import SimCaseSearch
+from open_assistant.watsen import SimCaseSearch, ConversationMimic
+
 
 st.set_page_config(page_title="My Assistant", page_icon="💬")
 st.title("My Assistant")
 
 
-def init_server():
+def init_session_state():
     if "server_api_key" not in st.session_state:
         st.session_state.server_api_key = "EMPTY"
     if "server_api_base" not in st.session_state:
         st.session_state.server_api_base = "https://u31193-92ae-b10f516b.neimeng.seetacloud.com:6443/v1" #"https://api.openai.com/v1"
     if "generate_params" not in st.session_state:
         st.session_state.generate_params = {'max_tokens':2048, 'temperature':0.9, 'top_p':0.6}
-        
+    if "tool_names" not in st.session_state:
+        st.session_state.tool_names = ["Browse Website"]
+    if "chat_model_name" not in st.session_state:
+        st.session_state.chat_model_name = "gpt-3.5-turbo"
+    if "completion_model_name" not in st.session_state:
+        st.session_state.completion_model_name = ""text-davinci-003""
+    if "embedding_model_name" not in st.session_state::
+        st.session_state.embedding_model_name = "text-embedding-ada-002"
+    if "prompt_template" not in st.session_state:
+        st.session_state.prompt_template = "vicuna_v1.1"
+    if "system_message" not in st.session_state:
+        st.session_state.system_message = "You are Vic, an AI assistant that follows instruction extremely well. Help as much as you can."
 
-init_server()
+
+def set_openai_keys(api_key="EMPTY", api_base="https://api.openai.com/v1"):
+    os.environ['OPENAI_API_KEY'] = api_key
+    os.environ['OPENAI_API_BASE'] = api_base
+    openai.api_key = api_key
+    openai.api_base = api_base
+
+
+init_session_state()
+set_openai_keys(st.session_state.server_api_key, st.session_state.server_api_base)
 
 
 with st.sidebar:
@@ -50,17 +71,6 @@ with st.sidebar:
     )
 
 
-def set_openai_keys(api_key="EMPTY", api_base="https://api.openai.com/v1"):
-    os.environ['OPENAI_API_KEY'] = api_key
-    os.environ['OPENAI_API_BASE'] = api_base
-    
-    openai.api_key = api_key
-    openai.api_base = api_base
-
-
-set_openai_keys(st.session_state.server_api_key, st.session_state.server_api_base)
-
-
 @st.cache_resource
 def init_sim_case_search(case, model_name):
     return SimCaseSearch(data=case, model_name=model_name)
@@ -77,24 +87,10 @@ def try_again():
 
 def clear_messages():
     del st.session_state.messages
-    
-
-def init_tool_names():
-    if "tool_names" not in st.session_state:
-        st.session_state.tool_names = ["Browse Website"]
-    return st.session_state.tool_names
 
 
-def init_prompt_template():
-    if "prompt_template" not in st.session_state:
-        st.session_state.prompt_template = "vicuna_v1.1"
-    return st.session_state.prompt_template
-
-
-def init_system_message():
-    if "system_message" not in st.session_state:
-        st.session_state.system_message = "You are Vic, an AI assistant that follows instruction extremely well. Help as much as you can."
-    return st.session_state.system_message
+def click_add_message(message):
+    st.session_state.messages.append({"role": "user", "content": message})
 
 
 def init_messages(avatar_user='🧑‍💻', avatar_assistant='🤖'):
@@ -126,19 +122,24 @@ def read_image(image_path):
     
 
 def main():
-    avatar_user = None
-    avatar_assistant = None
+    template_name = st.session_state.prompt_template
+    system_message = st.session_state.system_message
     
-    tool_names = init_tool_names()
-    tools = load_tools(tool_names=tool_names, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002")
+    chat_model_name = st.session_state.chat_model_name
+    embedding_model_name = st.session_state.embedding_model_name
+    completion_model_name = st.session_state.completion_model_name
+    
+    tool_names = st.session_state.tool_names
+    tools = load_tools(tool_names=tool_names, model_name=chat_model_name, embedding_model_name=embedding_model_name)
 
     generate_params = st.session_state.generate_params
-    agent = load_agent(model_name="text-davinci-003", tools=tools, generate_params=generate_params)
+    agent = load_agent(model_name=completion_model_name, tools=tools, generate_params=generate_params)
     
-    sim_case_search = init_sim_case_search(CASES, model_name="text-embedding-ada-002")
+    sim_case_search = init_sim_case_search(CASES, model_name=embedding_model_name)
+    conversation_mimic = ConversationMimic(model_name=chat_model_name)
 
-    conv_template_name = init_prompt_template()
-    system_message = init_system_message()
+    avatar_user = None
+    avatar_assistant = None
     messages = init_messages(avatar_user=avatar_user, avatar_assistant=avatar_assistant)
     
     if prompt := st.chat_input("Shift + Enter 换行, Enter 发送"):
@@ -157,26 +158,34 @@ def main():
                 one_shot = sim_case_search(prompt)
                 with st.spinner('I am thinking🤔...'):
                     response = agent.run(
-                        {'user': prompt, 'history': messages[:-1], 'example': one_shot, 'system_message': system_message , 'conv_template_name': conv_template_name}, 
+                        {'user': prompt, 'history': messages[:-1], 'example': one_shot, 'system_message': system_message , 'conv_template_name': template_name}, 
                         callbacks=[st_callback]
                     )
                 placeholder.markdown(response)
-                messages.append({"role": "assistant", "content": response})
-                print(messages)
             except AuthenticationError:
+                response = "Something wrong happened. The system is taking over the AI assistant"
                 st.info("For users interested in HuggingFace models", icon="ℹ️")
                 st.error("Incorrect API Base provided. See how to set API base at https://github.com/Qiyuan-Ge/OpenAssistant.")
                 st.info("For users interested in OpenAI models", icon="ℹ️")
                 st.error("Incorrect API Key provided. Find your API key at https://platform.openai.com/account/api-keys.")
                 st.stop()
             except Exception as e:
+                response = "Something wrong happened. The system is taking over the AI assistant"
                 st.error(e)
                 st.stop()
-        st.button("clear conversation", key='b3', on_click=clear_messages)
+        placeholder.markdown(response)
+        messages.append({"role": "assistant", "content": response})
+        print(messages)
+        predictions = conversation_mimic(messages)
+        st.button(f"a. {response[0]}", key='b4', on_click=click_add_message, kwargs={'message':predictions[0]})
+        st.button(f"b. {response[1]}", key='b5', on_click=click_add_message, kwargs={'message':predictions[1]})
+        st.button(f"c. {response[2]}", key='b6', on_click=click_add_message, kwargs={'message':predictions[2]})
+        
+        st.button("clear conversation", key='b1', on_click=clear_messages)
         st.button("try again", key='b2', on_click=try_again)
     
     if len(messages) > 0:
-        st.button("go back", key='b1', on_click=go_back)
+        st.button("go back", key='b3', on_click=go_back)
             
 
 if __name__ == "__main__":
