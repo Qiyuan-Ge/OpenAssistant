@@ -179,6 +179,7 @@ def main():
         with st.spinner('You might ask...'):
             try:
                 predictions = conversation_mimic(messages)
+                placeholder.markdown(str(predictions))
             except Exception as e:
                 predictions = None
         
