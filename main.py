@@ -190,7 +190,6 @@ def main():
         if predictions is not None:
             st.button(f"a. {response[0]}", key='b4', on_click=click_add_message, kwargs={'message':predictions[0]})
             st.button(f"b. {response[1]}", key='b5', on_click=click_add_message, kwargs={'message':predictions[1]})
-            st.button(f"c. {response[2]}", key='b6', on_click=click_add_message, kwargs={'message':predictions[2]})
     
             
 
