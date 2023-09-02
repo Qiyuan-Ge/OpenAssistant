@@ -179,7 +179,8 @@ def main():
         with st.spinner('You might ask...'):
             try:
                 predictions = conversation_mimic(messages)
-            except:
+            except Exception as e:
+                st.error(e)
                 predictions = None
         
         st.button("clear conversation", key='b1', on_click=clear_messages)
