@@ -67,7 +67,7 @@ class ConversationMimic:
         print(llm_output)
         pattern = r"\d+\.\s*(.+)"
         predictions = re.findall(pattern, llm_output)
-        
+        print(predictions)
         return predictions
     
     def convert_messages_to_conversation(self, messages: List[dict], context_window_size: int = 4):
