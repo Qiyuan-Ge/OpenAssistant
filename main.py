@@ -177,15 +177,16 @@ def main():
         messages.append({"role": "assistant", "content": response})
         print(messages)
         predictions = conversation_mimic(messages)
-        st.button(f"a. {response[0]}", key='b4', on_click=click_add_message, kwargs={'message':predictions[0]})
-        st.button(f"b. {response[1]}", key='b5', on_click=click_add_message, kwargs={'message':predictions[1]})
-        st.button(f"c. {response[2]}", key='b6', on_click=click_add_message, kwargs={'message':predictions[2]})
         
         st.button("clear conversation", key='b1', on_click=clear_messages)
         st.button("try again", key='b2', on_click=try_again)
+        if len(messages) > 0:
+            st.button("go back", key='b3', on_click=go_back)
+
+        st.button(f"a. {response[0]}", key='b4', on_click=click_add_message, kwargs={'message':predictions[0]})
+        st.button(f"b. {response[1]}", key='b5', on_click=click_add_message, kwargs={'message':predictions[1]})
+        st.button(f"c. {response[2]}", key='b6', on_click=click_add_message, kwargs={'message':predictions[2]})
     
-    if len(messages) > 0:
-        st.button("go back", key='b3', on_click=go_back)
             
 
 if __name__ == "__main__":
