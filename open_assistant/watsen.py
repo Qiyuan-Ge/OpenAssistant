@@ -72,7 +72,7 @@ class ConversationMimic:
         print(predictions)
         return predictions
     
-    def convert_messages_to_conversation(self, messages: List[dict], context_window_size: int = 4):
+    def convert_messages_to_conversation(self, messages: List[dict], context_window_size: int = 3):
         conv_prompt = ""
         for i, message in enumerate(messages[::-1]):
             if i == context_window_size:
