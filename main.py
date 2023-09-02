@@ -180,7 +180,6 @@ def main():
             try:
                 predictions = conversation_mimic(messages)
             except Exception as e:
-                st.error(e)
                 predictions = None
         
         st.button("clear conversation", key='b1', on_click=clear_messages)
