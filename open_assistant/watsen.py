@@ -46,6 +46,8 @@ Please respond in the following format:
 1. first prediction
 2. second prediction
 
+Each prediction should be concise, no more than 20 words.
+
 Your predictions:
 """ 
 
