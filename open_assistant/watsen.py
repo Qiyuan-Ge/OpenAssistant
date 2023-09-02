@@ -60,11 +60,11 @@ class ConversationMimic:
     def __call__(self, messages: List[dict], context_window_size: int = 4):
         conv_prompt = self.convert_messages_to_conversation(messages, context_window_size)
         prompt = self.template.format(conversation=conv_prompt)
-        llm_output = self.client.create(
+        completion = self.client.create(
             model=self.model_name,
             messages=[{"role": "user", "content": prompt}]
         )
-        
+        llm_output = completion.choices[0].message.content
         pattern = r"\d+\.\s*(.+)"
         predictions = re.findall(pattern, llm_output)
         
