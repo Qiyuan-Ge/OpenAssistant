@@ -36,6 +36,8 @@ def init_session_state():
         st.session_state.system_message = "You are Vic, an AI assistant that follows instruction extremely well. Help as much as you can."
     if "translation" not in st.session_state:
         st.session_state.translation = ""
+    if "translation_lang" not in st.session_state:
+        st.session_state.translation_lang = "中文"
         
 
 def set_openai_keys(api_key="EMPTY", api_base="https://api.openai.com/v1"):
@@ -227,9 +229,10 @@ def main():
             with col1:
                 text = st.text_input(label="Text", key='text', value=st.session_state.translation)
             with col2:
-                lang = st.text_input(label="Language", key='lang', value='中文', max_chars=20)
-            if len(text) > 0 and text != st.session_state.translation:
+                lang = st.text_input(label="Language", key='lang', value=st.session_state.translation_lang, max_chars=20)
+            if (len(text) > 0 and text != st.session_state.translation) or (len(text) > 0 and lang != st.session_state.translation_lang):
                 st.session_state.translation = text
+                st.session_state.translation_lang = lang
                 translator = load_tools(tool_names=['Translator'], model_name=chat_model_name)[0]
                 res = translator({'text':text, 'language':lang})
                 st.write(res)
