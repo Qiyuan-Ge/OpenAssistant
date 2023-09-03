@@ -210,7 +210,7 @@ def main():
             st.button(f"🔵{predictions[0]}", key='b1', on_click=click_add_message, kwargs={'message':predictions[0]})
             st.button(f"🔴{predictions[1]}", key='b2', on_click=click_add_message, kwargs={'message':predictions[1]})
          
-    if prompt and len(messages) > 0:
+    if len(messages) > 0:
         col1, col2, col3 = st.columns([2, 2, 8])
         with col1:
             st.button("try again", key='b3', on_click=try_again)
@@ -218,8 +218,6 @@ def main():
             st.button("go back", key='b4', on_click=go_back)
         with col3:
             st.button("clear conversation", key='b5', on_click=clear_messages)
-    elif prompt:
-        st.button("try again", key='b3', on_click=try_again)
         
     with st.container():
         with st.expander("Tranlator"):
