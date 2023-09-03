@@ -141,6 +141,9 @@ def main():
     avatar_user = None
     avatar_assistant = None
     messages = init_messages(avatar_user=avatar_user, avatar_assistant=avatar_assistant)
+
+    with st.expander("See explanation"):
+        st.text_input(label="Tranlator", key='tranlator')
     
     if prompt := st.chat_input("Shift + Enter 换行, Enter 发送"):
         with st.chat_message("user", avatar=avatar_user):
