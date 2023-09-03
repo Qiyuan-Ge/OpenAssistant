@@ -166,14 +166,14 @@ def main():
 
     if len(messages) == 0:
         with st.container():
-            example3 = "What are the headlines today?"
-            st.button(f"💬{example3}", key='b_r3', on_click=click_add_message, kwargs={'message':example3})
+            example1 = "What are the headlines today?"
+            st.button(f"💬{example1}", key='b_e1', on_click=click_add_message, kwargs={'message':example1})
             
-            example4 = "Search Marvel Movies Coming in 2024."
-            st.button(f"💬{example4}", key='b_r4', on_click=click_add_message, kwargs={'message':example4})
+            example2 = "Search Marvel Movies Coming in 2024."
+            st.button(f"💬{example2}", key='b_e2', on_click=click_add_message, kwargs={'message':example2})
             
-            example6 = "A summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
-            st.button(f"💬{example6}", key='b_r6', on_click=click_add_message, kwargs={'message':example6})
+            example3 = "A summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
+            st.button(f"💬{example3}", key='b_e3', on_click=click_add_message, kwargs={'message':example3})
         
     if len(messages) > 0 and messages[-1]['role'] == 'user':
         prompt = messages[-1]['content']
