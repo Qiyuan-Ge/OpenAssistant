@@ -141,70 +141,69 @@ def main():
     avatar_user = None
     avatar_assistant = None
     messages = init_messages(avatar_user=avatar_user, avatar_assistant=avatar_assistant)
+    
+    if prompt := st.chat_input("Shift + Enter 换行, Enter 发送"):
+        with st.chat_message("user", avatar=avatar_user):
+            st.markdown(prompt)
+        messages.append({"role": "user", "content": prompt})
+
+    if len(messages) == 0:
+        example1 = "Who are you?"
+        example2 = "What are the headlines today?"
+        example3 = "Search Marvel Movies Coming in 2024."
+        example4 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
+        st.button(f"💬{example1}", key='b_r1', on_click=click_add_message, kwargs={'message':example1})
+        st.button(f"💬{example2}", key='b_r2', on_click=click_add_message, kwargs={'message':example2})
+        st.button(f"💬{example3}", key='b_r3', on_click=click_add_message, kwargs={'message':example3})
+        st.button(f"💬{example4}", key='b_r4', on_click=click_add_message, kwargs={'message':example4})
+        
+    if len(messages) > 0 and messages[-1]['role'] == 'user':
+        prompt = messages[-1]['content']
+
+    if prompt:
+        with st.chat_message("assistant", avatar=avatar_assistant):
+            placeholder = st.empty()
+            st_callback = StreamlitCallbackHandler(st.container())
+            try:
+                one_shot = sim_case_search(prompt)
+                with st.spinner('I am thinking🤔...'):
+                    response = agent.run(
+                        {'user': prompt, 'history': messages[:-1], 'example': one_shot, 'system_message': system_message , 'conv_template_name': template_name}, 
+                        callbacks=[st_callback]
+                    )
+                placeholder.markdown(response)
+            except AuthenticationError:
+                response = "Something wrong happened. The system is taking over the AI assistant"
+                st.info("For users interested in HuggingFace models", icon="ℹ️")
+                st.error("Incorrect API Base provided. See how to set API base at https://github.com/Qiyuan-Ge/OpenAssistant.")
+                st.info("For users interested in OpenAI models", icon="ℹ️")
+                st.error("Incorrect API Key provided. Find your API key at https://platform.openai.com/account/api-keys.")
+                st.stop()
+            except Exception as e:
+                response = "Something wrong happened. The system is taking over the AI assistant"
+                st.error(e)
+                st.stop()
+        placeholder.markdown(response)
+        messages.append({"role": "assistant", "content": response})
+        print(messages)
+        with st.spinner('You might ask...'):
+            try:
+                predictions = conversation_mimic(messages)
+            except Exception as e:
+                predictions = None
+
+        if predictions is not None:
+            st.button(f"🔵{predictions[0]}", key='b1', on_click=click_add_message, kwargs={'message':predictions[0]})
+            st.button(f"🔴{predictions[1]}", key='b2', on_click=click_add_message, kwargs={'message':predictions[1]})
+        
+        st.button("try again", key='b3', on_click=try_again)  
+    if len(messages) > 0:
+        st.button("go back", key='b4', on_click=go_back)
+        st.button("clear conversation", key='b5', on_click=clear_messages)
+
+    st.text_input(label="Tranlator", key='tranlator')
 
     tab1, tab2 = st.tabs(["Chat", "Translator"])
-    
-    with tab1:
-        if prompt := st.chat_input("Shift + Enter 换行, Enter 发送"):
-            with st.chat_message("user", avatar=avatar_user):
-                st.markdown(prompt)
-            messages.append({"role": "user", "content": prompt})
-    
-        if len(messages) == 0:
-            example1 = "Who are you?"
-            example2 = "What are the headlines today?"
-            example3 = "Search Marvel Movies Coming in 2024."
-            example4 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
-            st.button(f"💬{example1}", key='b_r1', on_click=click_add_message, kwargs={'message':example1})
-            st.button(f"💬{example2}", key='b_r2', on_click=click_add_message, kwargs={'message':example2})
-            st.button(f"💬{example3}", key='b_r3', on_click=click_add_message, kwargs={'message':example3})
-            st.button(f"💬{example4}", key='b_r4', on_click=click_add_message, kwargs={'message':example4})
-            
-        if len(messages) > 0 and messages[-1]['role'] == 'user':
-            prompt = messages[-1]['content']
-    
-        if prompt:
-            with st.chat_message("assistant", avatar=avatar_assistant):
-                placeholder = st.empty()
-                st_callback = StreamlitCallbackHandler(st.container())
-                try:
-                    one_shot = sim_case_search(prompt)
-                    with st.spinner('I am thinking🤔...'):
-                        response = agent.run(
-                            {'user': prompt, 'history': messages[:-1], 'example': one_shot, 'system_message': system_message , 'conv_template_name': template_name}, 
-                            callbacks=[st_callback]
-                        )
-                    placeholder.markdown(response)
-                except AuthenticationError:
-                    response = "Something wrong happened. The system is taking over the AI assistant"
-                    st.info("For users interested in HuggingFace models", icon="ℹ️")
-                    st.error("Incorrect API Base provided. See how to set API base at https://github.com/Qiyuan-Ge/OpenAssistant.")
-                    st.info("For users interested in OpenAI models", icon="ℹ️")
-                    st.error("Incorrect API Key provided. Find your API key at https://platform.openai.com/account/api-keys.")
-                    st.stop()
-                except Exception as e:
-                    response = "Something wrong happened. The system is taking over the AI assistant"
-                    st.error(e)
-                    st.stop()
-            placeholder.markdown(response)
-            messages.append({"role": "assistant", "content": response})
-            print(messages)
-            with st.spinner('You might ask...'):
-                try:
-                    predictions = conversation_mimic(messages)
-                except Exception as e:
-                    predictions = None
-    
-            if predictions is not None:
-                st.button(f"🔵{predictions[0]}", key='b1', on_click=click_add_message, kwargs={'message':predictions[0]})
-                st.button(f"🔴{predictions[1]}", key='b2', on_click=click_add_message, kwargs={'message':predictions[1]})
-            
-            st.button("try again", key='b3', on_click=try_again)  
-        if len(messages) > 0:
-            st.button("go back", key='b4', on_click=go_back)
-            st.button("clear conversation", key='b5', on_click=clear_messages)
-
-        st.text_input(label="Tranlator", key='tranlator')
 
         
 if __name__ == "__main__":
