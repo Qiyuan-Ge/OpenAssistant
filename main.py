@@ -237,7 +237,7 @@ def main():
                 lang = st.text_input(label="Language", key='lang', value=st.session_state.translation_lang, max_chars=20)
             with col3:
                 trans_params = {'text':text, 'language':lang}
-                st.button("Translate", key='b_trans', on_click=translate_func, kwargs={'params':trans_params})
+                st.button("Trans", key='b_trans', on_click=translate_func, kwargs={'params':trans_params})
             st.write(st.session_state.translation)
 
         
