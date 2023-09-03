@@ -147,15 +147,17 @@ def main():
         with st.chat_message("user", avatar=avatar_user):
             st.markdown(prompt)
         messages.append({"role": "user", "content": prompt})
+
+    if len(messages) == 0:
+        example1 = "Who are you? What can you do for me?"
+        example2 = "Search Marvel Movies Coming in 2024."
+        example3 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
+        st.button(f"💬{example1}", key='b_r1', on_click=click_add_message, kwargs={'message':example1})
+        st.button(f"💬{example2}", key='b_r2', on_click=click_add_message, kwargs={'message':example2})
+        st.button(f"💬{example3}", key='b_r3', on_click=click_add_message, kwargs={'message':example3})
         
     if len(messages) > 0 and messages[-1]['role'] == 'user':
         prompt = messages[-1]['content']
-
-    if len(messages) == 0:
-        example1 = "Who are you?"
-        example2 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
-        st.button(f"💬{example1}", key='b6', on_click=click_add_message, kwargs={'message':example1})
-        st.button(f"💬{example2}", key='b7', on_click=click_add_message, kwargs={'message':example2})
 
     if prompt:
         with st.chat_message("assistant", avatar=avatar_assistant):
