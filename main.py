@@ -209,7 +209,7 @@ def main():
                 st.text_input(label="Text", key='text')
             with col2:
                 st.text_input(label="Language", key='lang', value='中文', max_chars=10)
-                st.write("This is translation result")
+            st.write("This is translation result")
 
         
 if __name__ == "__main__":
