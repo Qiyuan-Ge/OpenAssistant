@@ -154,14 +154,17 @@ def main():
                 example1 = "Who are you?"
                 st.button(f"💬{example1}", key='b_r1', on_click=click_add_message, kwargs={'message':example1})
             with col2:
-                example2 = "What are the headlines today?"
+                example2 = "What can you do for me?"
                 st.button(f"💬{example2}", key='b_r2', on_click=click_add_message, kwargs={'message':example2})
-        example3 = "Search Marvel Movies Coming in 2024."
-        example4 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
-        
-        
-        st.button(f"💬{example3}", key='b_r3', on_click=click_add_message, kwargs={'message':example3})
-        st.button(f"💬{example4}", key='b_r4', on_click=click_add_message, kwargs={'message':example4})
+            col1, col2 = st.columns(2)
+            with col1:
+                example3 = "Search Marvel Movies Coming in 2024."
+                st.button(f"💬{example3}", key='b_r3', on_click=click_add_message, kwargs={'message':example3})
+            with col2:
+                example4 = "What are the headlines today?"
+                st.button(f"💬{example4}", key='b_r4', on_click=click_add_message, kwargs={'message':example4})
+            example5 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
+            st.button(f"💬{example5}", key='b_r5', on_click=click_add_message, kwargs={'message':example5})
         
     if len(messages) > 0 and messages[-1]['role'] == 'user':
         prompt = messages[-1]['content']
