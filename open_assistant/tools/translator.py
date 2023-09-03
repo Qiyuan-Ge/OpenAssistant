@@ -21,6 +21,13 @@ class Translator:
         self.template = prompt_template
         
     def run(self, text: str, language: str):
+        """Translate text to another language.
+
+        Args:
+            text (str): text
+            language (str): target language
+
+        """        
         prompts = self.template.format(text=text, language=language)
         completion = self.client.create(model=self.model_name, messages=[{"role": "user", "content": prompts}])
         llm_output = completion.choices[0].message.content
