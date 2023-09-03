@@ -37,9 +37,12 @@ class Wikipedia:
 
         """        
         try:
-            loader = self.loader(query=input, load_max_docs=4, lang='en')
-            data = loader.load()
-    
+            try:
+                loader = self.loader(query=input, load_max_docs=4, lang='en')
+                data = loader.load()
+                print(data)
+            except Exception as e:
+                return f"error1 {e}"
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=self.chunk_size, 
                 chunk_overlap=self.chunk_overlap,
