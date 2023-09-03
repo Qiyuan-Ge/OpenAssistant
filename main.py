@@ -128,9 +128,6 @@ def read_image(image_path):
 def translate_func(params):
     translator = load_tools(tool_names=['Translator'], model_name=chat_model_name)[0]
     res = translator(params)
-
-    return res
-    
     
 
 def main():
