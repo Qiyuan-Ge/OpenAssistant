@@ -76,5 +76,5 @@ class OpenWeatherMapAPIWrapper(BaseModel):
             w = observation.weather
             return self._format_weather_info(location, w)
         except Exception as e:
-            error_msg = f'"{location}" raised error: {e}. Please try again with a valid location"'
+            error_msg = f'"{location}" raised error: {e}. Please try again with a valid location with English name"'
             return error_msg
