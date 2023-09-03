@@ -130,10 +130,11 @@ def read_image(image_path):
     
     return image_data
 
-
+@st.cache_resource
 def translate_func(params):
-    translator = load_tools(tool_names=['Translator'], model_name=st.session_state.chat_model_name)[0]
-    st.session_state.translation = translator(params)
+    with st.spinner('You might ask...'):
+        translator = load_tools(tool_names=['Translator'], model_name=st.session_state.chat_model_name)[0]
+        st.session_state.translation = translator(params)
     
 
 def main():
