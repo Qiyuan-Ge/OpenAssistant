@@ -12,4 +12,3 @@ beautifulsoup4==4.11.1
 chromadb==0.3.29
 Pillow==10.0.0
 wikipedia==1.4.0
-pandas==1.5.0
