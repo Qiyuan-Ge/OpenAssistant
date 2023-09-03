@@ -204,11 +204,11 @@ def main():
         
     with st.container():
         with st.expander("Tranlator"):
-            st.text_input(label="Language", key='lang', value='中文', max_chars=10)
             col1, col2 = st.columns(2)
             with col1:
                 st.text_input(label="Text", key='text')
             with col2:
+                st.text_input(label="Language", key='lang', value='中文', max_chars=10)
                 st.write("This is translation result")
 
         
