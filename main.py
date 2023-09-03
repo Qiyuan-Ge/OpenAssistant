@@ -151,11 +151,11 @@ def main():
         with st.container():
             col1, col2 = st.columns(2)
             with col1:
+                example1 = "Who are you?"
                 st.button(f"💬{example1}", key='b_r1', on_click=click_add_message, kwargs={'message':example1})
             with col2:
+                example2 = "What are the headlines today?"
                 st.button(f"💬{example2}", key='b_r2', on_click=click_add_message, kwargs={'message':example2})
-            example1 = "Who are you?"
-            example2 = "What are the headlines today?"
         example3 = "Search Marvel Movies Coming in 2024."
         example4 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
         
