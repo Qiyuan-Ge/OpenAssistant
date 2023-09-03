@@ -99,15 +99,15 @@ with st.container():
         Search Wikipedia.
         """
     )
-    st.markdown(
-    """
-    Language
-    """
-    )
+    # st.markdown(
+    # """
+    # Language
+    # """
+    # )
     option = st.selectbox(
         "Language",
         ("en", "zh"),
-        label_visibility="collapsed",
+        #label_visibility="collapsed",
     )
 
 st.divider()
