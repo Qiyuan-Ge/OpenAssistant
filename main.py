@@ -141,12 +141,6 @@ def main():
     avatar_user = None
     avatar_assistant = None
     messages = init_messages(avatar_user=avatar_user, avatar_assistant=avatar_assistant)
-
-    if len(messages) == 0:
-        example1 = "Who are you?"
-        example2 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
-        st.button(f"💬{example1}", key='b6', on_click=click_add_message, kwargs={'message':example1})
-        st.button(f"💬{example2}", key='b7', on_click=click_add_message, kwargs={'message':example2})
         
     
     if prompt := st.chat_input("Shift + Enter 换行, Enter 发送"):
@@ -156,6 +150,12 @@ def main():
         
     if len(messages) > 0 and messages[-1]['role'] == 'user':
         prompt = messages[-1]['content']
+
+    if len(messages) == 0:
+        example1 = "Who are you?"
+        example2 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
+        st.button(f"💬{example1}", key='b6', on_click=click_add_message, kwargs={'message':example1})
+        st.button(f"💬{example2}", key='b7', on_click=click_add_message, kwargs={'message':example2})
 
     if prompt:
         with st.chat_message("assistant", avatar=avatar_assistant):
