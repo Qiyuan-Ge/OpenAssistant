@@ -227,7 +227,7 @@ def main():
             with col2:
                 lang = st.text_input(label="Language", key='lang', value='中文', max_chars=20)
             translator = load_tools(tool_names=['Translator'], model_name=chat_model_name)[0]
-            res = translator.run(text=text, language=lang)
+            res = translator({'text':text, 'language':lang}
             st.write(res)
 
         
