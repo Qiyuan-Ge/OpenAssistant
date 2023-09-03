@@ -149,7 +149,7 @@ def main():
 
     if len(messages) == 0:
         with st.container():
-            col1, col2 = st.columns(2):
+            col1, col2 = st.columns(2)
             with col1:
                 st.button(f"💬{example1}", key='b_r1', on_click=click_add_message, kwargs={'message':example1})
             with col2:
