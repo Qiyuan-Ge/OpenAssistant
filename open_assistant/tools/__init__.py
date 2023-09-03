@@ -21,7 +21,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                     description='gather information from Internet, args: {"input": "query"}',
                 )
                 tools.append(tool)
-            except:
+            except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Current Weather":
             try:
@@ -32,7 +32,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                     description='get the current weather information for a specified location, args: {"input": "city_name"}',
                 )
                 tools.append(tool)
-            except:
+            except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Browse Website":
             try:
@@ -43,7 +43,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 )
                 tool.description = 'gather information from a specified website, args: {"url": "url", "question": "question"}'
                 tools.append(tool)
-            except:
+            except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Calculator":
             try:
@@ -54,7 +54,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                     description='language model that interprets a prompt and executes python code to do math, args: {"input": "math expression"}',
                 )
                 tools.append(tool)
-            except:
+            except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Translator":
             try:
@@ -65,8 +65,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 )
                 tool.description = 'translate text to another language, args: {"text": "text", "language":"language"}'
                 tools.append(tool)
-            except Exception as e:
-                st.info(e) 
+            except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         else:
             st.info(f"Unknown tool name: {tool_name}", icon="ℹ️")
