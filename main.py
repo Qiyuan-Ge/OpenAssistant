@@ -202,6 +202,8 @@ def main():
         st.button("go back", key='b4', on_click=go_back)
         st.button("clear conversation", key='b5', on_click=clear_messages)
 
+st.text_input(label="Tranlator", key='tranlator')
+
         
 if __name__ == "__main__":
     main()
