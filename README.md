@@ -126,7 +126,7 @@ See more details in https://github.com/lm-sys/FastChat/blob/main/docs/openai_api
 ````
 streamlit run main.py
 ````
-Then replace the **API Base** with http://0.0.0.0:6006/v1 <br>
+Then replace the **API Base** with your api base (in this case is http://0.0.0.0:6006/v1) <br>
 <img src="https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/api%20base.png" alt="apibase" width="128"/>
 
 
