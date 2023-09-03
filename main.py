@@ -202,7 +202,7 @@ def main():
         st.button("clear conversation", key='b5', on_click=clear_messages)
 
 
-    tab1, tab2 = st.tabs(["Chat", "Translator"])
+    tab1 = st.tabs(["Translator"])
 
     with tab1:
         st.text_input(label="Tranlator", key='tranlator')
