@@ -236,7 +236,7 @@ def main():
             st.button("clear conversation", key='b5', on_click=clear_messages)
         
     with st.container():
-        with st.expander("Translator"):
+        with st.expander("Translator", expanded=True):
             col1, col2, col3 = st.columns([6, 1, 1])
             with col1:
                 text = st.text_input(label="Text", key='text', label_visibility="collapsed", placeholder="Text put here...", max_chars=1024)
