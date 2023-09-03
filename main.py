@@ -207,19 +207,18 @@ def main():
                 predictions = None
 
         if predictions is not None:
-            col1, col2 = st.columns(2)
-            with col1:
-                st.button(f"🔵{predictions[0]}", key='b1', on_click=click_add_message, kwargs={'message':predictions[0]})
-            with col2:
-                st.button(f"🔴{predictions[1]}", key='b2', on_click=click_add_message, kwargs={'message':predictions[1]})
+            st.button(f"🔵{predictions[0]}", key='b1', on_click=click_add_message, kwargs={'message':predictions[0]})
+            st.button(f"🔴{predictions[1]}", key='b2', on_click=click_add_message, kwargs={'message':predictions[1]})
         
-        st.button("try again", key='b3', on_click=try_again)
+        col1, col2, col3 = st.columns([2,2,8])
+        with col1:
+            st.button("try again", key='b3', on_click=try_again)
         
     if len(messages) > 0:
-        col1, col2 = st.columns([2,8])
-        with col1:
-            st.button("go back", key='b4', on_click=go_back)
+        # col1, col2 = st.columns([2,8])
         with col2:
+            st.button("go back", key='b4', on_click=go_back)
+        with col3:
             st.button("clear conversation", key='b5', on_click=clear_messages)
         
     with st.container():
