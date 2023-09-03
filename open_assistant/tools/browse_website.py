@@ -22,7 +22,7 @@ def compute_tokens_length(s):
 
 class BrowseWebsiteWithQuestion:
     def __init__(self, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002", chunk_size=384, chunk_overlao=64):
-        self.llm = ChatOpenAI(model_name=model_name)
+        self.client = ChatOpenAI(model_name=model_name)
         self.embeddings = OpenAIEmbeddings(model=embedding_model_name)
         self.loader = WebBaseLoader
         self.chunk_size = chunk_size
@@ -49,7 +49,7 @@ class BrowseWebsiteWithQuestion:
             all_splits = text_splitter.split_documents(data)
             vectorstore = Chroma.from_documents(documents=all_splits, embedding=self.embeddings)
             qa_chain = RetrievalQA.from_chain_type(
-                self.llm,
+                self.client,
                 retriever=vectorstore.as_retriever(),
                 chain_type_kwargs={"prompt": self.template}
             )
