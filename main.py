@@ -38,6 +38,8 @@ def init_session_state():
         st.session_state.translation = ""
     if "translation_lang" not in st.session_state:
         st.session_state.translation_lang = "中文"
+    if "wiki_lang" not in st.session_state:
+        st.session_state.wiki_lang = "en"
     if "env_key_data" not in st.session_state:
         st.session_state.env_key_data = {"OPENWEATHERMAP_API_KEY": "0b4591ad2028813c97dedeffa0d08c9c"}
         for env_name, key in st.session_state.env_key_data.items():
@@ -141,9 +143,10 @@ def main():
     chat_model_name = st.session_state.chat_model_name
     embedding_model_name = st.session_state.embedding_model_name
     completion_model_name = st.session_state.completion_model_name
+    wiki_lang=st.session_state.wiki_lang
     
     tool_names = st.session_state.tool_names
-    tools = load_tools(tool_names=tool_names, model_name=chat_model_name, embedding_model_name=embedding_model_name)
+    tools = load_tools(tool_names=tool_names, model_name=chat_model_name, embedding_model_name=embedding_model_name, wiki_lang=wiki_lang)
 
     generate_params = st.session_state.generate_params
     agent = load_agent(model_name=completion_model_name, tools=tools, generate_params=generate_params)
