@@ -160,7 +160,7 @@ def main():
                 example3 = "What are the headlines today?"
                 st.button(f"💬{example3}", key='b_r3', on_click=click_add_message, kwargs={'message':example3})
             
-            col1, col2 = st.columns(2)
+            col1, col2 = st.columns([2, 3])
             with col1:
                 example4 = "Search Marvel Movies Coming in 2024."
                 st.button(f"💬{example4}", key='b_r4', on_click=click_add_message, kwargs={'message':example4})
