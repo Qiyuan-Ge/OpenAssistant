@@ -20,6 +20,8 @@ def init_session_state():
         st.session_state.server_api_key = "EMPTY"
     if "server_api_base" not in st.session_state:
         st.session_state.server_api_base = "https://u31193-92ae-b10f516b.neimeng.seetacloud.com:6443/v1" #"https://api.openai.com/v1"
+    if "env_key_data" not in st.session_state:
+        st.session_state.env_key_data = {"OPENWEATHERMAP_API_KEY": "0b4591ad2028813c97dedeffa0d08c9c"}
     if "generate_params" not in st.session_state:
         st.session_state.generate_params = {'max_tokens':2048, 'temperature':0.9, 'top_p':0.6}
     if "tool_names" not in st.session_state:
