@@ -227,7 +227,7 @@ def main():
             st.button(f"🔴{predictions[1]}", key='b2', on_click=click_add_message, kwargs={'message':predictions[1]})
          
     if len(messages) > 0:
-        col1, col2, col3, col4 = st.columns([2, 2, 4, 4])
+        col1, col2, col3, col4 = st.columns([3, 3, 3, 3])
         with col1:
             st.button("try again", key='b3', on_click=try_again)
         with col2:
