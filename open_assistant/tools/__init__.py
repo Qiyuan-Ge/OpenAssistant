@@ -7,6 +7,7 @@ from .weather import OpenWeatherMapAPIWrapper
 from .browse_website import BrowseWebsiteWithQuestion
 from .llm_math import Calulator
 from .translator import Translator
+from .wikipedia import Wikipedia
 
             
 def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002") -> List[Tool]:
@@ -18,7 +19,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 tool = Tool(
                     name="Google Search",
                     func=tool_func.run,
-                    description='gather information from Internet, args: {"input": "query"}',
+                    description='gather information from Google, args: {"input": "query"}',
                 )
                 tools.append(tool)
             except Exception as e: 
@@ -42,6 +43,17 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                     func=tool_func.run,
                 )
                 tool.description = 'gather information from a specified website, args: {"url": "url", "question": "question"}'
+                tools.append(tool)
+            except Exception as e: 
+                st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
+        elif tool_name == "Wikipedia":
+            try:
+                tool_func = Wikipedia(model_name=model_name, embedding_model_name=embedding_model_name)
+                tool = StructuredTool.from_function(
+                    name="Wikipedia",
+                    func=tool_func.run,
+                )
+                tool.description = 'gather information from Wikipedia, args: {"input": "input", "question":"question"}'
                 tools.append(tool)
             except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
