@@ -83,7 +83,7 @@ st.divider()
 
 with st.container():
     st.subheader('Google Search🔍')
-    update("Google Search", "ck1")
+    update("Google Search", "ck_google")
     st.markdown(
         """
         Use the Google Serper component to search the web.
@@ -96,8 +96,19 @@ with st.container():
 st.divider()
 
 with st.container():
+    st.subheader('Wikipedia📖')
+    update("Wikipedia", "ck_wikipedia")
+    st.markdown(
+        """
+        Search Wikipedia.
+        """
+    )
+
+st.divider()
+
+with st.container():
     st.subheader('Current Weather🌦️') 
-    update("Current Weather", "ck2")
+    update("Current Weather", "ck_weather")
     st.markdown(
         """
         Use the OpenWeatherMap component to fetch weather information.
@@ -111,7 +122,7 @@ st.divider()
 
 with st.container():
     st.subheader('Browse Website📱')
-    update("Browse Website", "ck3")
+    update("Browse Website", "ck_websites")
     st.markdown(
         """
         Fetch information from the given web page.
@@ -122,7 +133,7 @@ st.divider()
 
 with st.container():
     st.subheader('Calculator➗') 
-    update("Calculator", "ck4")
+    update("Calculator", "ck_calculator")
     st.markdown(
         """
         Language model that interprets a prompt and executes python code to do math.
@@ -133,7 +144,7 @@ st.divider()
 
 with st.container():
     st.subheader('Translator🗣️') 
-    update("Translator", "ck5")
+    update("Translator", "ck_translator")
     st.markdown(
         """
         Translate text to another language.
