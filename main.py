@@ -15,6 +15,13 @@ st.set_page_config(page_title="My Assistant", page_icon="💬")
 st.title("My Assistant")
 
 
+def check_pandas_version():
+    import pandas as pd
+    if pd.__version__ != '1.5.0':
+        ! pip install pandas==1.5.0
+check_pandas_version()
+
+
 def init_session_state():
     if "server_api_key" not in st.session_state:
         st.session_state.server_api_key = "EMPTY"
@@ -40,6 +47,7 @@ def init_session_state():
         st.session_state.translation = ""
     if "translation_lang" not in st.session_state:
         st.session_state.translation_lang = "中文"
+    
         
 
 def set_openai_keys(api_key="EMPTY", api_base="https://api.openai.com/v1"):
