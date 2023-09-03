@@ -23,7 +23,7 @@ def init_session_state():
     if "generate_params" not in st.session_state:
         st.session_state.generate_params = {'max_tokens':2048, 'temperature':0.9, 'top_p':0.6}
     if "tool_names" not in st.session_state:
-        st.session_state.tool_names = ["Browse Website"]
+        st.session_state.tool_names = ["Browse Website", "Current Weather"]
     if "chat_model_name" not in st.session_state:
         st.session_state.chat_model_name = "gpt-3.5-turbo"
     if "completion_model_name" not in st.session_state:
