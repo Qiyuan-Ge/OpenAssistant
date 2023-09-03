@@ -234,7 +234,7 @@ def main():
             st.button("go back", key='b4', on_click=go_back)
         with col3:
             st.button("clear conversation", key='b5', on_click=clear_messages)
-        with col3:
+        with col4:
             trans_params = {'text':response, 'language':st.session_state.translation_lang}
             st.button("translate(翻译)", key='b6', on_click=translate_func, kwargs={'params':trans_params})
         
