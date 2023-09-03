@@ -11,3 +11,4 @@ openai==0.27.8
 beautifulsoup4==4.11.1
 chromadb==0.3.29
 Pillow==10.0.0
+wikipedia==1.4.0
