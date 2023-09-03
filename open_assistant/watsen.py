@@ -66,7 +66,7 @@ class ConversationMimic:
             messages=[{"role": "user", "content": prompt}]
         )
         llm_output = completion.choices[0].message.content
-        print(llm_output)
+ 
         pattern = r"\d+\.\s*(.+)"
         predictions = re.findall(pattern, llm_output)
         print(predictions)
