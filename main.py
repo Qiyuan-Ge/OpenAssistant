@@ -174,13 +174,8 @@ def main():
                 example3 = "What are the headlines today?"
                 st.button(f"💬{example3}", key='b_r3', on_click=click_add_message, kwargs={'message':example3})
             
-            col1, col2 = st.columns([2.5, 3])
-            with col1:
-                example4 = "Search Marvel Movies Coming in 2024."
-                st.button(f"💬{example4}", key='b_r4', on_click=click_add_message, kwargs={'message':example4})
-            with col2:
-                example5 = "Write a letter to invite my friend to Shanghai."
-                st.button(f"💬{example5}", key='b_r5', on_click=click_add_message, kwargs={'message':example5})
+            example4 = "Search Marvel Movies Coming in 2024."
+            st.button(f"💬{example4}", key='b_r4', on_click=click_add_message, kwargs={'message':example4})
             
             example6 = "Give me a summary of this web page: https://github.com/Qiyuan-Ge/OpenAssistant"
             st.button(f"💬{example6}", key='b_r6', on_click=click_add_message, kwargs={'message':example6})
@@ -237,7 +232,7 @@ def main():
             st.button("translate(翻译)", key='b6', on_click=translating, kwargs={'params':trans_params})
         
     with st.container():
-        with st.expander("Translator", expanded=True):
+        with st.expander("Translator"):
             col1, col2, col3 = st.columns([6, 1, 1])
             with col1:
                 text = st.text_input(label="Text", key='text', label_visibility="collapsed", placeholder="Text put here...", max_chars=1024)
