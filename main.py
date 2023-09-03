@@ -141,9 +141,6 @@ def main():
     avatar_user = None
     avatar_assistant = None
     messages = init_messages(avatar_user=avatar_user, avatar_assistant=avatar_assistant)
-
-    with st.expander("See explanation"):
-        st.text_input(label="Tranlator", key='tranlator')
     
     if prompt := st.chat_input("Shift + Enter 换行, Enter 发送"):
         with st.chat_message("user", avatar=avatar_user):
@@ -204,6 +201,9 @@ def main():
     if len(messages) > 0:
         st.button("go back", key='b4', on_click=go_back)
         st.button("clear conversation", key='b5', on_click=clear_messages)
+    
+    with st.expander("Tranlator"):
+        st.text_input(label="Tranlator", key='tranlator')
 
 
     # tab1 = st.tabs(["Translator"])
