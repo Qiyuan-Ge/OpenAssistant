@@ -21,12 +21,12 @@ def compute_tokens_length(s):
 
 
 class BrowseWebsiteWithQuestion:
-    def __init__(self, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002", chunk_size=384, chunk_overlao=64):
+    def __init__(self, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002", chunk_size=384, chunk_overlap=64):
         self.client = ChatOpenAI(model_name=model_name)
         self.embeddings = OpenAIEmbeddings(model=embedding_model_name)
         self.loader = WebBaseLoader
         self.chunk_size = chunk_size
-        self.chunk_overlap = chunk_overlao
+        self.chunk_overlap = chunk_overlap
         self.template = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
         
     def run(self, url: str, question: str):
