@@ -34,7 +34,9 @@ def init_session_state():
         st.session_state.prompt_template = "vicuna_v1.1"
     if "system_message" not in st.session_state:
         st.session_state.system_message = "You are Vic, an AI assistant that follows instruction extremely well. Help as much as you can."
-
+    if "translation" not in st.session_state:
+        st.session_state.translation = ""
+        
 
 def set_openai_keys(api_key="EMPTY", api_base="https://api.openai.com/v1"):
     os.environ['OPENAI_API_KEY'] = api_key
@@ -220,7 +222,7 @@ def main():
             st.button("clear conversation", key='b5', on_click=clear_messages)
         
     with st.container():
-        with st.expander("Tranlator"):
+        with st.expander("Translator"):
             col1, col2 = st.columns([5, 1])
             with col1:
                 text = st.text_input(label="Text", key='text')
