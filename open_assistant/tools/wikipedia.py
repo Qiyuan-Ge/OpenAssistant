@@ -20,7 +20,7 @@ def compute_tokens_length(s):
     return len(encoding.encode(s))
 
 
-class Wikipedia:
+class WikipediaWithQuestion:
     def __init__(self, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002", chunk_size=384, chunk_overlao=64):
         self.client = ChatOpenAI(model_name=model_name)
         self.embeddings = OpenAIEmbeddings(model=embedding_model_name)
