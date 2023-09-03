@@ -216,8 +216,11 @@ def main():
         st.button("try again", key='b3', on_click=try_again)
         
     if len(messages) > 0:
-        st.button("go back", key='b4', on_click=go_back)
-        st.button("clear conversation", key='b5', on_click=clear_messages)
+        col1, col2 = st.columns(2)
+        with col1:
+            st.button("go back", key='b4', on_click=go_back)
+        with col2:
+            st.button("clear conversation", key='b5', on_click=clear_messages)
         
     with st.container():
         with st.expander("Tranlator"):
