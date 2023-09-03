@@ -128,3 +128,14 @@ with st.container():
         Language model that interprets a prompt and executes python code to do math.
         """
     )
+
+st.divider()
+
+with st.container():
+    st.subheader('Translator🗣️') 
+    update("Translator", "ck5")
+    st.markdown(
+        """
+        Translate text to another language.
+        """
+    )
