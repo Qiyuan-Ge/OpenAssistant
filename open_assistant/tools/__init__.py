@@ -48,7 +48,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Wikipedia":
             try:
-                tool_func = Wikipedia(model_name=model_name, embedding_model_name=embedding_model_name, wiki_lang=wiki_lang)
+                tool_func = Wikipedia(model_name=model_name, embedding_model_name=embedding_model_name, lang=wiki_lang)
                 tool = StructuredTool.from_function(
                     name="Wikipedia with question",
                     func=tool_func.run,
