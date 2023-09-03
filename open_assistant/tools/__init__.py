@@ -65,7 +65,8 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 )
                 tool.description = 'translate text to another language, args: {"text": "text", "language":"language"}'
                 tools.append(tool)
-            except:
+            except Exception as e:
+                st.info(e) 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         else:
             st.info(f"Unknown tool name: {tool_name}", icon="ℹ️")
