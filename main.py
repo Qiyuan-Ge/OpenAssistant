@@ -204,7 +204,7 @@ def main():
         
     with st.container():
         with st.expander("Tranlator"):
-            col1, col2 = st.columns([4, 1])
+            col1, col2 = st.columns([5, 1])
             with col1:
                 st.text_input(label="Text", key='text')
             with col2:
