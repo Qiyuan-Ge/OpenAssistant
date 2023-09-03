@@ -8,7 +8,7 @@ As a translation expert with 20 years of translation experience, when I give a s
 3. Do not add content irrelevant to the original text
 
 # original text
-{ORIGINAL}
+{text}
 
 # translation
 '''
