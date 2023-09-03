@@ -236,7 +236,7 @@ def main():
             st.button("clear conversation", key='b5', on_click=clear_messages)
         with col3:
             trans_params = {'text':response, 'language':st.session_state.translation_lang}
-            st.button("translate("翻译")", key='b6', on_click=translate_func, kwargs={'params':trans_params})
+            st.button("translate(翻译)", key='b6', on_click=translate_func, kwargs={'params':trans_params})
         
     with st.container():
         with st.expander("Translator", expanded=True):
