@@ -232,9 +232,9 @@ def main():
         with st.expander("Translator"):
             col1, col2, col3 = st.columns([6, 1, 1])
             with col1:
-                text = st.text_input(label="Text", key='text')
+                text = st.text_input(label="Text", key='text', label_visibility="collapsed", placeholder="Text put here...")
             with col2:
-                lang = st.text_input(label="Language", key='lang', value=st.session_state.translation_lang, max_chars=20)
+                lang = st.text_input(label="Language", key='lang', value=st.session_state.translation_lang, max_chars=20, label_visibility="collapsed")
             with col3:
                 trans_params = {'text':text, 'language':lang}
                 st.button("Trans", key='b_trans', on_click=translate_func, kwargs={'params':trans_params})
