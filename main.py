@@ -225,10 +225,11 @@ def main():
         with st.expander("Translator"):
             col1, col2 = st.columns([5, 1])
             with col1:
-                text = st.text_input(label="Text", key='text')
+                text = st.text_input(label="Text", key='text', value=st.session_state.translation)
             with col2:
                 lang = st.text_input(label="Language", key='lang', value='中文', max_chars=20)
-            if len(text) > 0:
+            if len(text) > 0 and text != st.session_state.translation:
+                st.session_state.translation = text
                 translator = load_tools(tool_names=['Translator'], model_name=chat_model_name)[0]
                 res = translator({'text':text, 'language':lang})
                 st.write(res)
