@@ -226,9 +226,10 @@ def main():
                 text = st.text_input(label="Text", key='text')
             with col2:
                 lang = st.text_input(label="Language", key='lang', value='中文', max_chars=20)
-            translator = load_tools(tool_names=['Translator'], model_name=chat_model_name)[0]
-            res = translator({'text':text, 'language':lang})
-            st.write(res)
+            if len(text) > 0:
+                translator = load_tools(tool_names=['Translator'], model_name=chat_model_name)[0]
+                res = translator({'text':text, 'language':lang})
+                st.write(res)
 
         
 if __name__ == "__main__":
