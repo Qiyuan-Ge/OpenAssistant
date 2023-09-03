@@ -102,7 +102,7 @@ with st.container():
     option = st.selectbox(
         "Language of Wikipedia",
         ("en", "zh"),
-        label_visibility=""collapsed"",
+        label_visibility="collapsed",
     )
     st.markdown(
         """
