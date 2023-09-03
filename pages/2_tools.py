@@ -96,18 +96,18 @@ with st.container():
     update("Wikipedia", "ck_wikipedia")
     st.markdown(
         """
-        Language of Wikipedia
-        """
-    )
-    option = st.selectbox(
-        "Language of Wikipedia",
-        ("en", "zh"),
-        label_visibility="collapsed",
-    )
-    st.markdown(
-        """
         Search Wikipedia.
         """
+    )
+    st.markdown(
+    """
+    Language
+    """
+    )
+    option = st.selectbox(
+        "Language",
+        ("en", "zh"),
+        label_visibility="collapsed",
     )
 
 st.divider()
