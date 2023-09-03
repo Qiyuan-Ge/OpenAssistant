@@ -204,7 +204,7 @@ def main():
     with st.container():
         with st.expander("Tranlator"):
             st.text_input(label="Language", key='lang', value='中文', max_chars=10)
-            st.text_input(label="Tranlator", key='tranlator')
+            st.text_input(label="Text", key='text')
 
         
 if __name__ == "__main__":
