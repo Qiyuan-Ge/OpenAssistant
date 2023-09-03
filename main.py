@@ -227,13 +227,16 @@ def main():
             st.button(f"🔴{predictions[1]}", key='b2', on_click=click_add_message, kwargs={'message':predictions[1]})
          
     if len(messages) > 0:
-        col1, col2, col3 = st.columns([2, 2, 8])
+        col1, col2, col3, col4 = st.columns([2, 2, 4, 4])
         with col1:
             st.button("try again", key='b3', on_click=try_again)
         with col2:
             st.button("go back", key='b4', on_click=go_back)
         with col3:
             st.button("clear conversation", key='b5', on_click=clear_messages)
+        with col3:
+            trans_params = {'text':response, 'language':st.session_state.translation_lang}
+            st.button("translate("翻译")", key='b6', on_click=translate_func, kwargs={'params':trans_params})
         
     with st.container():
         with st.expander("Translator", expanded=True):
@@ -242,6 +245,7 @@ def main():
                 text = st.text_input(label="Text", key='text', label_visibility="collapsed", placeholder="Text put here...", max_chars=1024)
             with col2:
                 lang = st.text_input(label="Language", key='lang', value=st.session_state.translation_lang, max_chars=16, label_visibility="collapsed")
+                st.session_state.translation_lang = lang
             with col3:
                 trans_params = {'text':text, 'language':lang}
                 st.button("Trans", key='b_trans', on_click=translate_func, kwargs={'params':trans_params})
