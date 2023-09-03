@@ -32,6 +32,13 @@ def update_key(env_name, obj_key):
     key = st.session_state.env_key_data.get(env_name, "")
     os.environ[env_name] = st.text_input(label="API Key", value=key, key=obj_key, type="password")
     st.session_state.env_key_data[env_name] = os.environ[env_name]
+
+def get_lang_options():
+    options = ["en", "zh"]
+    options.remove(st.session_state.wiki_lang)
+    options.insert(0, st.session_state.wiki_lang)
+    
+    return options
     
     
 @st.cache_data
@@ -99,15 +106,9 @@ with st.container():
         Search Wikipedia.
         """
     )
-    # st.markdown(
-    # """
-    # Language
-    # """
-    # )
-    option = st.selectbox(
+    st.session_state.wiki_lang = st.selectbox(
         "Language",
-        ("en", "zh"),
-        #label_visibility="collapsed",
+        get_lang_options(),
     )
 
 st.divider()
