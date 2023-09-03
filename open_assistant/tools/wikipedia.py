@@ -21,12 +21,13 @@ def compute_tokens_length(s):
 
 
 class Wikipedia:
-    def __init__(self, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002", chunk_size=384, chunk_overlao=64):
+    def __init__(self, model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002", chunk_size=384, chunk_overlap=64, lang='en'):
         self.client = ChatOpenAI(model_name=model_name)
         self.embeddings = OpenAIEmbeddings(model=embedding_model_name)
         self.loader = WikipediaLoader
         self.chunk_size = chunk_size
-        self.chunk_overlap = chunk_overlao
+        self.chunk_overlap = chunk_overlap
+        self.lang = lang
         self.template = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
         
     def run(self, input: str, question: str):
@@ -37,7 +38,7 @@ class Wikipedia:
 
         """        
         try:
-            loader = self.loader(query=input, load_max_docs=4, lang='en')
+            loader = self.loader(query=input, load_max_docs=6, lang=self.lang)
             data = loader.load()
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=self.chunk_size, 
