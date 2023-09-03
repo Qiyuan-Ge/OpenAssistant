@@ -2,10 +2,6 @@ import os
 import json
 import streamlit as st
 from io import StringIO
-    
-
-if "env_key_data" not in st.session_state:
-    st.session_state.env_key_data = {"OPENWEATHERMAP_API_KEY": "0b4591ad2028813c97dedeffa0d08c9c"}
 
 
 def add_tool(name):
