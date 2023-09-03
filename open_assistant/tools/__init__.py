@@ -50,7 +50,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
             try:
                 tool_func = Wikipedia(model_name=model_name, embedding_model_name=embedding_model_name)
                 tool = StructuredTool.from_function(
-                    name="Wikipedia",
+                    name="Wikipedia with question",
                     func=tool_func.run,
                 )
                 tool.description = 'gather information from Wikipedia, args: {"input": "input", "question":"question"}'
