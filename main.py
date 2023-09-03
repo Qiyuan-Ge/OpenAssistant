@@ -216,7 +216,7 @@ def main():
         st.button("try again", key='b3', on_click=try_again)
         
     if len(messages) > 0:
-        col1, col2 = st.columns([1,8])
+        col1, col2 = st.columns([2,8])
         with col1:
             st.button("go back", key='b4', on_click=go_back)
         with col2:
