@@ -131,7 +131,7 @@ def read_image(image_path):
     return image_data
 
 @st.cache_resource
-def translate_func(params):
+def translating(params):
     with st.spinner('You might ask...'):
         translator = load_tools(tool_names=['Translator'], model_name=st.session_state.chat_model_name)[0]
         st.session_state.translation = translator(params)
@@ -234,7 +234,7 @@ def main():
             st.button("clear conversation", key='b5', on_click=clear_messages)
         with col4:
             trans_params = {'text':messages[-1]['content'], 'language':st.session_state.translation_lang}
-            st.button("translate(翻译)", key='b6', on_click=translate_func, kwargs={'params':trans_params})
+            st.button("translate(翻译)", key='b6', on_click=translating, kwargs={'params':trans_params})
         
     with st.container():
         with st.expander("Translator", expanded=True):
@@ -246,7 +246,7 @@ def main():
                 st.session_state.translation_lang = lang
             with col3:
                 trans_params = {'text':text, 'language':lang}
-                st.button("Trans", key='b_trans', on_click=translate_func, kwargs={'params':trans_params})
+                st.button("Trans", key='b_trans', on_click=translating, kwargs={'params':trans_params})
             st.write(st.session_state.translation)
 
         
