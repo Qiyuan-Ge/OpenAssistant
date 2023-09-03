@@ -123,6 +123,14 @@ def read_image(image_path):
         image_data = io.BytesIO(image_data)
     
     return image_data
+
+
+def translate_func(params):
+    translator = load_tools(tool_names=['Translator'], model_name=chat_model_name)[0]
+    res = translator(params)
+
+    return res
+    
     
 
 def main():
@@ -225,17 +233,16 @@ def main():
         
     with st.container():
         with st.expander("Translator"):
-            col1, col2 = st.columns([5, 1])
+            col1, col2, col3 = st.columns([6, 1, 1])
             with col1:
                 text = st.text_input(label="Text", key='text', value=st.session_state.translation)
             with col2:
                 lang = st.text_input(label="Language", key='lang', value=st.session_state.translation_lang, max_chars=20)
-            if (len(text) > 0 and text != st.session_state.translation) or (len(text) > 0 and lang != st.session_state.translation_lang):
-                st.session_state.translation = text
-                st.session_state.translation_lang = lang
-                translator = load_tools(tool_names=['Translator'], model_name=chat_model_name)[0]
-                res = translator({'text':text, 'language':lang})
-                st.write(res)
+            with col3:
+                res = st.button(Translate, key='b_trans', on_click=translate_func, kwargs={'text':text, 'language':lang})
+            st.session_state.translation = text
+            st.session_state.translation_lang = lang
+            st.write(res)
 
         
 if __name__ == "__main__":
