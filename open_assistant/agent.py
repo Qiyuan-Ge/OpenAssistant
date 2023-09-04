@@ -46,13 +46,14 @@ Thought: I should greet the user.
 Action: Final Response
 Action Input: {{"content": "Hello! How can I assist you today?"}}
 
+
 Previous chat history:
 {history}
 
 
 Let's Begin!
 
-Last Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
+Final Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
 
 
 def get_current_time():
