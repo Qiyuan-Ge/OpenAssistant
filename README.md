@@ -44,7 +44,6 @@ Experience the convenience of the Open Assistant Web User Interface (WebUI).
 ## Quick Experience 
 [streamlit app](https://openassistant.streamlit.app/)<br>
 
-
 ## Support models
 models on huggingface:
 - vicuna
