@@ -53,6 +53,7 @@ Previous chat history:
 
 Let's Begin!
 
+
 Final Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
 
 
