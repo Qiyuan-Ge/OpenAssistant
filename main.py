@@ -232,7 +232,7 @@ def main():
             with col1:
                 text = st.text_input(label="Text", key='text', label_visibility="collapsed", placeholder="Text put here...", max_chars=1024)
             with col2:
-                lang = st.text_input(label="Language", key='lang', value=st.session_state.translation_lang, max_chars=16, label_visibility="collapsed")
+                lang = st.text_input(label="Language", key='lang', value=st.session_state.translation_lang, max_chars=20, label_visibility="collapsed")
                 st.session_state.translation_lang = lang
             with col3:
                 trans_params = {'text':text, 'language':lang}
