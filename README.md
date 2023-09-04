@@ -43,7 +43,6 @@ Experience the convenience of the Open Assistant Web User Interface (WebUI).
 
 ## Quick Experience 
 [streamlit app](https://openassistant.streamlit.app/)<br>
-API Base: https://u31193-92ae-b10f516b.neimeng.seetacloud.com:6443/v1
 
 
 ## Support models
