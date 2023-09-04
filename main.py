@@ -21,7 +21,7 @@ def init_session_state():
     if "server_api_base" not in st.session_state:
         st.session_state.server_api_base = "http://region-31.seetacloud.com:59252/v1" #"https://api.openai.com/v1"    
     if "generate_params" not in st.session_state:
-        st.session_state.generate_params = {'max_tokens':2048, 'temperature':0.9, 'top_p':0.6}
+        st.session_state.generate_params = {'max_tokens':1024, 'temperature':0.9, 'top_p':0.6}
     if "tool_names" not in st.session_state:
         st.session_state.tool_names = ["Wikipedia", "Browse Website", "Current Weather"]
     if "chat_model_name" not in st.session_state:
