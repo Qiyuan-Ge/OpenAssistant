@@ -33,7 +33,7 @@ def init_session_state():
     if "prompt_template" not in st.session_state:
         st.session_state.prompt_template = "vicuna_v1.1"
     if "system_message" not in st.session_state:
-        st.session_state.system_message = "You are Alexa, an AI assistant that follows instruction extremely well. Help as much as you can."
+        st.session_state.system_message = "You are Vic, an AI assistant that follows instruction extremely well. Help as much as you can."
     if "translation" not in st.session_state:
         st.session_state.translation = ""
     if "translation_lang" not in st.session_state:
