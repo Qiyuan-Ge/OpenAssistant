@@ -46,7 +46,7 @@ def init_session_state():
             os.environ[env_name] = key
     
         
-def set_openai_keys(api_key="EMPTY", api_base="https://api.openai.com/v1"):
+def set_openai_keys(api_key, api_base):
     os.environ['OPENAI_API_KEY'] = api_key
     os.environ['OPENAI_API_BASE'] = api_base
     openai.api_key = api_key
