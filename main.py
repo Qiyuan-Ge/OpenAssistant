@@ -183,7 +183,7 @@ def main():
             placeholder = st.empty()
             st_callback = StreamlitCallbackHandler(st.container())
             try:
-                one_shot = sim_case_search(prompt)
+                one_shot = sim_case_search(prompt, available_tools=tool_names)
                 with st.spinner('I am thinking🤔...'):
                     response = agent.run(
                         {'user': prompt, 'history': messages[:-1], 'example': one_shot, 'system_message': system_message , 'conv_template_name': template_name}, 
