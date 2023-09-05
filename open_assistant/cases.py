@@ -73,7 +73,7 @@ Action Input: {"content": "Stan Lee and Steve Ditko created Spider-Man."}
 CASES = []
 for i, example in enumerate(d):
     instruction = example.split('Thought')[0].lstrip('Question:').strip()
-    tools = list(set(extract_actions(text)[:-1]))
+    tools = list(set(extract_actions(example)[:-1]))
     response = example[example.find('Thought'):]
     CASES.append({"id":i, "instruction":instruction, "response":response, "tools":tools})
     
