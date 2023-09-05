@@ -147,7 +147,7 @@ def main():
     wiki_lang=st.session_state.wiki_lang
     
     tool_names = st.session_state.tool_names
-    tools = load_tools(tool_names=tool_names, model_name=chat_model_name, embedding_model_name=embedding_model_name, wiki_lang=wiki_lang)
+    tools, inside_tool_names = load_tools(tool_names=tool_names, model_name=chat_model_name, embedding_model_name=embedding_model_name, wiki_lang=wiki_lang)
 
     generate_params = st.session_state.generate_params
     agent = load_agent(model_name=completion_model_name, tools=tools, generate_params=generate_params)
@@ -183,7 +183,7 @@ def main():
             placeholder = st.empty()
             st_callback = StreamlitCallbackHandler(st.container())
             try:
-                one_shot = sim_case_search(prompt, available_tools=tool_names)
+                one_shot = sim_case_search(prompt, available_tools=inside_tool_names)
                 with st.spinner('I am thinking🤔...'):
                     response = agent.run(
                         {'user': prompt, 'history': messages[:-1], 'example': one_shot, 'system_message': system_message , 'conv_template_name': template_name}, 
