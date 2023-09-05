@@ -12,6 +12,7 @@ from .wikipedia import Wikipedia
             
 def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_model_name="text-embedding-ada-002", wiki_lang="en") -> List[Tool]:
     tools = []
+    inside_tool_names = []       
     for tool_name in tool_names:
         if tool_name == "Google Search":
             try:
@@ -22,6 +23,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                     description='gather information from Google, args: {"input": "query"}',
                 )
                 tools.append(tool)
+                inside_tool_names.append(tool.name)
             except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Current Weather":
@@ -33,6 +35,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                     description='get the current weather information for a specified location, args: {"input": "city_name"}',
                 )
                 tools.append(tool)
+                inside_tool_names.append(tool.name)
             except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Browse Website":
@@ -44,6 +47,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 )
                 tool.description = 'gather information from a specified website, args: {"url": "url", "question": "question"}'
                 tools.append(tool)
+                inside_tool_names.append(tool.name)
             except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Wikipedia":
@@ -55,6 +59,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 )
                 tool.description = 'gather information from Wikipedia, args: {"input": "input", "question":"question"}'
                 tools.append(tool)
+                inside_tool_names.append(tool.name)
             except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Calculator":
@@ -66,6 +71,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                     description='language model that interprets a prompt and executes python code to do math, args: {"input": "math expression"}',
                 )
                 tools.append(tool)
+                inside_tool_names.append(tool.name)
             except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         elif tool_name == "Translator":
@@ -77,6 +83,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
                 )
                 tool.description = 'translate text to another language, args: {"text": "text", "language":"language"}'
                 tools.append(tool)
+                inside_tool_names.append(tool.name)
             except Exception as e: 
                 st.info(f"Failed to add {tool_name} to tool list", icon="ℹ️")
         else:
@@ -87,4 +94,4 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
         description='call this function when you know the final answer or complete all tasks, args: {"content": "markdown_format"}',
         )
     tools.append(tool)
-    return tools
+    return tools, inside_tool_names
