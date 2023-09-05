@@ -32,9 +32,7 @@ class SimCaseSearch:
         embedding = self.client.create(model=self.model_name, input=query)
         query_embedding = np.array(embedding['data'][0]['embedding'])
         sim = np.matmul(query_embedding, self.embeddings)
-        import streamlit as st
-        st.info(f"shape: {sim.shape}")
-        top_ids = np.argsort(sim, axis=1)[:,::-1][0]
+        top_ids = np.argsort(sim)[::-1]
         for idx in top_ids:
             rec = self.data[idx] 
             if rec['tools'].issubset(available_tools):
