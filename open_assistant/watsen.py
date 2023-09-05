@@ -33,7 +33,7 @@ class SimCaseSearch:
         query_embedding = np.array(embedding['data'][0]['embedding'])
         sim = np.matmul(query_embedding, self.embeddings)
         import streamlit as st
-        st.info("shape: sim.shape")
+        st.info(f"shape: {sim.shape}")
         top_ids = np.argsort(sim, axis=1)[:,::-1][0]
         for idx in top_ids:
             rec = self.data[idx] 
