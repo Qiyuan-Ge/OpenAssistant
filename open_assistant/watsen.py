@@ -25,16 +25,19 @@ class SimCaseSearch:
 
         return embeddings.T   
         
-    def __call__(self, query: str):
+    def __call__(self, query: str, available_tools: List[str]):
+        available_tools = set(available_tools)
         if self.embeddings is None:
             self.embeddings = self.create_embeddings()
         embedding = self.client.create(model=self.model_name, input=query)
         query_embedding = np.array(embedding['data'][0]['embedding'])
         sim = np.matmul(query_embedding, self.embeddings)
-        idx = sim.argmax()
-        rec = self.data[idx]
-        
-        return self.template.format(instruction=rec['instruction'], response=rec['response'])
+        top_ids = np.argsort(sim, axis=1)[:,::-1][0]
+        for idx in top_ids:
+            rec = self.data[idx] 
+            if rec['tools'].issubset(available_tools):
+                return self.template.format(instruction=rec['instruction'], response=rec['response'])
+        return ''
 
 
 prompt_template_2 = """You are provided with a conversation history between an AI assistant and a user. Based on the context of the conversation, please predict the two most probable questions or requests the user is likely to make next.
