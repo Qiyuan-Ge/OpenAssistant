@@ -143,10 +143,9 @@ def main():
     chat_model_name = st.session_state.chat_model_name
     embedding_model_name = st.session_state.embedding_model_name
     completion_model_name = st.session_state.completion_model_name
-    wiki_lang=st.session_state.wiki_lang
     
     tool_names = st.session_state.tool_names
-    tools, inside_tool_names = load_tools(tool_names=tool_names, model_name=chat_model_name, embedding_model_name=embedding_model_name, wiki_lang=wiki_lang)
+    tools, inside_tool_names = load_tools(tool_names=tool_names, model_name=chat_model_name, embedding_model_name=embedding_model_name, wiki_lang=st.session_state.wiki_lang)
 
     generate_params = st.session_state.generate_params
     agent = load_agent(model_name=completion_model_name, tools=tools, generate_params=generate_params)
