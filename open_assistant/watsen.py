@@ -36,6 +36,7 @@ class SimCaseSearch:
         for idx in top_ids:
             rec = self.data[idx] 
             if rec['tools'].issubset(available_tools):
+                print(self.template.format(instruction=rec['instruction'], response=rec['response']))
                 return self.template.format(instruction=rec['instruction'], response=rec['response'])
         return ''
 
@@ -72,7 +73,7 @@ class ConversationMimic:
  
         pattern = r"\d+\.\s*(.+)"
         predictions = re.findall(pattern, llm_output)
-        print(predictions)
+
         return predictions
     
     def convert_messages_to_conversation(self, messages: List[dict], context_window_size: int = 3):
