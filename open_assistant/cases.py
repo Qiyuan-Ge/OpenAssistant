@@ -1,3 +1,12 @@
+import re
+
+def extract_actions(text):
+    # 使用正则表达式查找所有的Action部分
+    action_pattern = r"Action: (.*?)\n"
+    actions = re.findall(action_pattern, text, re.DOTALL)
+
+    return actions
+
 d = []
 # 1
 d.append("""Question: 截止2023年，加拿大有多少人口？
@@ -64,7 +73,8 @@ Action Input: {"content": "Stan Lee and Steve Ditko created Spider-Man."}
 CASES = []
 for i, example in enumerate(d):
     instruction = example.split('Thought')[0].lstrip('Question:').strip()
+    tools = list(set(extract_actions(text)[:-1]))
     response = example[example.find('Thought'):]
-    CASES.append({"id":i, "instruction":instruction, "response":response})
+    CASES.append({"id":i, "instruction":instruction, "response":response, "tools":tools})
     
 
