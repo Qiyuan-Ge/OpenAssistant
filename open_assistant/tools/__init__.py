@@ -91,7 +91,7 @@ def load_tools(tool_names: List[str], model_name="gpt-3.5-turbo", embedding_mode
     tool = Tool(
         name="Final Response",
         func=lambda x: None,
-        description='call this function when you know the final answer or complete all tasks, args: {"content": "markdown_format"}',
+        description='call this function when you know the final answer or complete all tasks',
         )
     tools.append(tool)
     return tools, inside_tool_names
