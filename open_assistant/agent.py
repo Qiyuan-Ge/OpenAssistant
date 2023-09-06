@@ -41,7 +41,7 @@ Here are two examples:
 Question: Hi.
 Thought: I should greet the user.
 Action: Final Response
-Action Input: {{"content": "Hello! How can I assist you today?"}}
+Action Input: Hello! How can I assist you today?
 {history}
 Now let's answer the following question:
 
@@ -76,22 +76,6 @@ def convert_messages_to_conversation(messages: List[dict]) -> str:
                 content += f"assistant: {message['content']}\n"
         
         return conv_prompt.format(content=content.strip())
-
-
-def try_parsing_final_response(action_input):
-    try:
-        pattern = r'\{[^{}]*\}'
-        action_input = re.findall(pattern, action_input)[0]
-        action_input = json.loads(action_input)
-        response = action_input["content"]
-    except:
-        start_patt = '{"content": "'
-        end_patt = '"}'
-        if action_input.startswith(start_patt) and action_input.endswith(end_patt):
-            response = action_input[len(start_patt):-len(end_patt)]
-        else:
-            response = action_input
-    return response
     
     
 # prompt模板
@@ -142,7 +126,6 @@ class CustomOutputParser(AgentOutputParser):
         regex = r"Action\s*\d*\s*:(.*?)\nAction\s*\d*\s*Input\s*\d*\s*:[\s]*(.*)"
         match = re.search(regex, llm_output, re.DOTALL)
         if not match:
-            llm_output = try_parsing_final_response(llm_output)
             return AgentFinish(
                 return_values={"output": llm_output},
                 log=llm_output,
@@ -151,7 +134,7 @@ class CustomOutputParser(AgentOutputParser):
         action_input = match.group(2).strip()
         # 检查是否应该停止
         if action == "Final Response":
-            response = try_parsing_final_response(action_input)
+            response = action_input
             return AgentFinish(
                 return_values={"output": response},
                 log=llm_output,
