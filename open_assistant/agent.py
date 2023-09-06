@@ -20,23 +20,23 @@ You have access to the following tools:
 {tools}
 
 
-Question: the input question you must answer or the task you must complete
+Question: the input question you must answer
 
 You should only respond in format as described below:
 
 Thought: you should always think about what to do
 Action: the action to take, should be one of [{tool_names}]
-Action Input: {{'arg name': 'value'}}
+Action Input: {{"arg name": "value"}}
 Observation: the result of the action
-... (this Thought/Action/Action Input/Observation can be repeated zero or more times)
+... (this Thought/Action/Action Input/Observation can be repeated one or more times)
 
 
 Here are two examples:
-1. Task that require tools:
+1. Task that require tools
 
 {example}
 
-2. Task that DON'T require tools(such as daily conversation, straightforward tasks):
+2. Task that DON'T require tools(such as daily conversation, straightforward tasks)
 
 Question: Hi.
 Thought: I should greet the user.
