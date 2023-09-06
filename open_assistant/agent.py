@@ -31,10 +31,7 @@ Observation: the result of the action
 ... (this Thought/Action/Action Input/Observation can be repeated zero or more times)
 
 
-Remember:
-1. Ensure the action input can be parsed by Python json.loads
-
-Examples:
+Here are two examples:
 1. Task that require tools:
 
 {example}
@@ -45,13 +42,8 @@ Question: Hi.
 Thought: I should greet the user.
 Action: Final Response
 Action Input: {{"content": "Hello! How can I assist you today?"}}
-
-
-Previous chat history:
 {history}
-
-
-Let's Begin!
+Now let's answer the following question:
 
 
 Final Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
@@ -72,14 +64,18 @@ def get_current_city():
 
 
 def convert_messages_to_conversation(messages: List[dict]) -> str:
-    conv_prompt = ""
-    for i, message in enumerate(messages):
-        if message["role"] == "user":
-            conv_prompt += f"user: {message['content']}\n"
-        elif message["role"] == "assistant":
-            conv_prompt += f"assistant: {message['content']}\n"
-            
-    return conv_prompt
+    if len(messages) == 0:
+        return "\n"
+    else:
+        conv_prompt = "\n\nPrevious chat history:\n{content}\n\n"
+        content = ""
+        for _, message in enumerate(messages):
+            if message["role"] == "user":
+                content += f"user: {message['content']}\n"
+            elif message["role"] == "assistant":
+                content += f"assistant: {message['content']}\n"
+        
+        return conv_prompt.format(content=content.strip())
 
 
 def try_parsing_final_response(action_input):
