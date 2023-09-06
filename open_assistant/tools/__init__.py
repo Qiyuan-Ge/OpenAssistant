@@ -98,7 +98,7 @@ def load_tools(
                 tool = Tool(
                     name="Code Agent",
                     func=tool_func.run,
-                    description='args: {"instruction": "instruction"}',
+                    description='useful when you need to answer question about code, args: {"question": "question"}',
                 )
                 tools.append(tool)
                 inside_tool_names.append(tool.name)

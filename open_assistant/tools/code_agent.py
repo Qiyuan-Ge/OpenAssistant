@@ -23,17 +23,17 @@ class CodeAgent:
         self.client = openai.Completion
         self.model_name = model_name
         
-    def run(self, instruction: str):
+    def run(self, question: str):
         """_summary_
 
         Args:
-            input (str): instruction
+            question (str): question
 
         Returns:
             _type_: _description_
         """        
         
-        prompt = get_prompt(instruction, chat_history=[], system_prompt=DEFAULT_SYSTEM_PROMPT)
+        prompt = get_prompt(question, chat_history=[], system_prompt=DEFAULT_SYSTEM_PROMPT)
         completion = self.client.create(
             model=self.model_name, 
             prompt=prompt, 
