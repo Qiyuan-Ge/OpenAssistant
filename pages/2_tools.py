@@ -157,3 +157,14 @@ with st.container():
         Translate text to another language.
         """
     )
+
+st.divider()
+
+with st.container():
+    st.subheader('Code Agent⌨️') 
+    update("Code Agent", "ck_code")
+    st.markdown(
+        """
+        Code Agent
+        """
+    )
