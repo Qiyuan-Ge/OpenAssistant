@@ -46,7 +46,7 @@ Action Input: Hello! How can I assist you today?
 Now let's answer the following question:
 
 
-Final Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
+Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
 
 
 def get_current_time():
