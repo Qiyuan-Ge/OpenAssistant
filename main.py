@@ -23,9 +23,11 @@ def init_session_state():
     if "generate_params" not in st.session_state:
         st.session_state.generate_params = {'max_tokens':1024, 'temperature':0.9, 'top_p':0.6}
     if "tool_names" not in st.session_state:
-        st.session_state.tool_names = ["Wikipedia", "Browse Website", "Current Weather"]
+        st.session_state.tool_names = ["Wikipedia", "Browse Website", "Current Weather", "Code Agent"]
     if "chat_model_name" not in st.session_state:
         st.session_state.chat_model_name = "gpt-3.5-turbo"
+    if "code_model_name" not in st.session_state:
+        st.session_state.code_model_name = "code-llama"
     if "completion_model_name" not in st.session_state:
         st.session_state.completion_model_name = "text-davinci-003"
     if "embedding_model_name" not in st.session_state:
@@ -141,11 +143,18 @@ def main():
     system_message = st.session_state.system_message
     
     chat_model_name = st.session_state.chat_model_name
+    code_model_name = st.session_state.code_model_name
     embedding_model_name = st.session_state.embedding_model_name
     completion_model_name = st.session_state.completion_model_name
     
     tool_names = st.session_state.tool_names
-    tools, inside_tool_names = load_tools(tool_names=tool_names, model_name=chat_model_name, embedding_model_name=embedding_model_name, wiki_lang=st.session_state.wiki_lang)
+    tools, inside_tool_names = load_tools(
+        tool_names=tool_names, 
+        chat_model_name=chat_model_name,
+        code_model_name=code_model_name,
+        embedding_model_name=embedding_model_name,
+        wiki_lang=st.session_state.wiki_lang,
+    )
 
     generate_params = st.session_state.generate_params
     agent = load_agent(model_name=completion_model_name, tools=tools, generate_params=generate_params)

@@ -36,7 +36,6 @@ class SimCaseSearch:
         for idx in top_ids:
             rec = self.data[idx] 
             if rec['tools'].issubset(available_tools):
-                print(self.template.format(instruction=rec['instruction'], response=rec['response']))
                 return self.template.format(instruction=rec['instruction'], response=rec['response'])
         return ''
 

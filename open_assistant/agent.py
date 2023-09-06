@@ -31,10 +31,7 @@ Observation: the result of the action
 ... (this Thought/Action/Action Input/Observation can be repeated zero or more times)
 
 
-Remember:
-1. Ensure the action input can be parsed by Python json.loads
-
-Examples:
+Here are two examples:
 1. Task that require tools:
 
 {example}
@@ -44,14 +41,9 @@ Examples:
 Question: Hi.
 Thought: I should greet the user.
 Action: Final Response
-Action Input: {{"content": "Hello! How can I assist you today?"}}
-
-
-Previous chat history:
+Action Input: Hello! How can I assist you today?
 {history}
-
-
-Let's Begin!
+Now let's answer the following question:
 
 
 Final Question: {user}""" + SPLIT_TOKEN + "{agent_scratchpad}"
@@ -72,30 +64,18 @@ def get_current_city():
 
 
 def convert_messages_to_conversation(messages: List[dict]) -> str:
-    conv_prompt = ""
-    for i, message in enumerate(messages):
-        if message["role"] == "user":
-            conv_prompt += f"user: {message['content']}\n"
-        elif message["role"] == "assistant":
-            conv_prompt += f"assistant: {message['content']}\n"
-            
-    return conv_prompt
-
-
-def try_parsing_final_response(action_input):
-    try:
-        pattern = r'\{[^{}]*\}'
-        action_input = re.findall(pattern, action_input)[0]
-        action_input = json.loads(action_input)
-        response = action_input["content"]
-    except:
-        start_patt = '{"content": "'
-        end_patt = '"}'
-        if action_input.startswith(start_patt) and action_input.endswith(end_patt):
-            response = action_input[len(start_patt):-len(end_patt)]
-        else:
-            response = action_input
-    return response
+    if len(messages) == 0:
+        return "\n"
+    else:
+        conv_prompt = "\n\nPrevious chat history:\n{content}\n\n"
+        content = ""
+        for _, message in enumerate(messages):
+            if message["role"] == "user":
+                content += f"user: {message['content']}\n"
+            elif message["role"] == "assistant":
+                content += f"assistant: {message['content']}\n"
+        
+        return conv_prompt.format(content=content.strip())
     
     
 # prompt模板
@@ -135,7 +115,7 @@ class CustomPromptTemplate(StringPromptTemplate):
         
         conv.append_message(conv.roles[0], user_prompt)
         conv.append_message(conv.roles[1], assistant_prompt)
-        # print(conv.get_prompt())
+        print(conv.get_prompt())
         return conv.get_prompt()   
     
 
@@ -146,7 +126,6 @@ class CustomOutputParser(AgentOutputParser):
         regex = r"Action\s*\d*\s*:(.*?)\nAction\s*\d*\s*Input\s*\d*\s*:[\s]*(.*)"
         match = re.search(regex, llm_output, re.DOTALL)
         if not match:
-            llm_output = try_parsing_final_response(llm_output)
             return AgentFinish(
                 return_values={"output": llm_output},
                 log=llm_output,
@@ -155,7 +134,7 @@ class CustomOutputParser(AgentOutputParser):
         action_input = match.group(2).strip()
         # 检查是否应该停止
         if action == "Final Response":
-            response = try_parsing_final_response(action_input)
+            response = action_input
             return AgentFinish(
                 return_values={"output": response},
                 log=llm_output,
