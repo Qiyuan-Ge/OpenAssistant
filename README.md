@@ -126,8 +126,3 @@ streamlit run main.py
 ````
 Then replace the **API Base** with your api base (in this case is http://0.0.0.0:6006/v1) <br>
 <img src="https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/api%20base.png" alt="apibase" width="128"/>
-
-Yarrr, with your backing, we'll keep the cannons... err, algorithms firing smoothly, raise the sails of innovation, and ensure you have a swashbucklin' good time with Open Assistant. Our hearty thanks for your generosity, and watch out for more treasures on the horizon!
-
-May the constellations align in your favor,  
-The Open Assistant Crew 🌠
