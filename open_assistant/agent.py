@@ -91,7 +91,8 @@ class CustomPromptTemplate(StringPromptTemplate):
         thoughts = ""
         for action, observation in intermediate_steps:
             thoughts += action.log
-            thoughts += f"\nObservation: {observation}\n"
+            # thoughts += f"\nObservation: {observation}\n"
+            thoughts += f"\nObservation: {observation}\nThought: "
         # Set the agent_scratchpad variable to that value
         kwargs["agent_scratchpad"] = thoughts
         # Create a tools variable from the list of tools provided
