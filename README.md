@@ -12,7 +12,7 @@
 ## Quick Experience 
 [openassistant app](https://openassistant.streamlit.app/)<br>
 
-darkassistant is the new version:<br>
+darkassistant is the new version(agents, code llama, ...):<br>
 [darkassistant app](https://darkassistant.streamlit.app/)<br>
 
 
