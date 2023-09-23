@@ -9,6 +9,13 @@
 </div>
 
 
+## Quick Experience 
+[openassistant app](https://openassistant.streamlit.app/)<br>
+
+darkassistant is the new version:<br>
+[darkassistant app](https://darkassistant.streamlit.app/)<br>
+
+
 ## Features
 Let's ask the assistant first🤔:
 <div style="text-align: center;">
@@ -40,9 +47,6 @@ Experience the convenience of the Open Assistant Web User Interface (WebUI).
 | ![Image 1](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display0.png) | ![Image 2](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display1.png) |
 | --- | --- |
 | ![Image 3](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display2.png) | ![Image 4](https://github.com/Qiyuan-Ge/OpenAssistant/blob/main/assets/display3.png) |
-
-## Quick Experience 
-[streamlit app](https://openassistant.streamlit.app/)<br>
 
 ## Support models
 models on huggingface:
